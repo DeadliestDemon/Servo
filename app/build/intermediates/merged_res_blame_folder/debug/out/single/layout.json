@@ -1,0 +1,62 @@
+[
+    {
+        "merged": "D:\\App Dev\\servo\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_pending.xml",
+        "source": "D:\\App Dev\\servo\\app\\src\\main\\res\\layout\\fragment_pending.xml"
+    },
+    {
+        "merged": "D:\\App Dev\\servo\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\content_new_complaint.xml",
+        "source": "D:\\App Dev\\servo\\app\\src\\main\\res\\layout\\content_new_complaint.xml"
+    },
+    {
+        "merged": "D:\\App Dev\\servo\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_main.xml",
+        "source": "D:\\App Dev\\servo\\app\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "D:\\App Dev\\servo\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_completed.xml",
+        "source": "D:\\App Dev\\servo\\app\\src\\main\\res\\layout\\fragment_completed.xml"
+    },
+    {
+        "merged": "D:\\App Dev\\servo\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_worker.xml",
+        "source": "D:\\App Dev\\servo\\app\\src\\main\\res\\layout\\activity_worker.xml"
+    },
+    {
+        "merged": "D:\\App Dev\\servo\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\retrieved_layout.xml",
+        "source": "D:\\App Dev\\servo\\app\\src\\main\\res\\layout\\retrieved_layout.xml"
+    },
+    {
+        "merged": "D:\\App Dev\\servo\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_second.xml",
+        "source": "D:\\App Dev\\servo\\app\\src\\main\\res\\layout\\fragment_second.xml"
+    },
+    {
+        "merged": "D:\\App Dev\\servo\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_first.xml",
+        "source": "D:\\App Dev\\servo\\app\\src\\main\\res\\layout\\fragment_first.xml"
+    },
+    {
+        "merged": "D:\\App Dev\\servo\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_login.xml",
+        "source": "D:\\App Dev\\servo\\app\\src\\main\\res\\layout\\activity_login.xml"
+    },
+    {
+        "merged": "D:\\App Dev\\servo\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_register.xml",
+        "source": "D:\\App Dev\\servo\\app\\src\\main\\res\\layout\\activity_register.xml"
+    },
+    {
+        "merged": "D:\\App Dev\\servo\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\content_pending.xml",
+        "source": "D:\\App Dev\\servo\\app\\src\\main\\res\\layout\\content_pending.xml"
+    },
+    {
+        "merged": "D:\\App Dev\\servo\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_complaint.xml",
+        "source": "D:\\App Dev\\servo\\app\\src\\main\\res\\layout\\activity_complaint.xml"
+    },
+    {
+        "merged": "D:\\App Dev\\servo\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\input_file.xml",
+        "source": "D:\\App Dev\\servo\\app\\src\\main\\res\\layout\\input_file.xml"
+    },
+    {
+        "merged": "D:\\App Dev\\servo\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_student.xml",
+        "source": "D:\\App Dev\\servo\\app\\src\\main\\res\\layout\\activity_student.xml"
+    },
+    {
+        "merged": "D:\\App Dev\\servo\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_new_complaint.xml",
+        "source": "D:\\App Dev\\servo\\app\\src\\main\\res\\layout\\activity_new_complaint.xml"
+    }
+]

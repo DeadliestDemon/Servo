@@ -1,0 +1,113 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.servo"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="23"
+8-->D:\App Dev\servo\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="31" />
+9-->D:\App Dev\servo\app\src\main\AndroidManifest.xml
+10
+11    <application
+11-->D:\App Dev\servo\app\src\main\AndroidManifest.xml:5:5-41:19
+12        android:allowBackup="true"
+12-->D:\App Dev\servo\app\src\main\AndroidManifest.xml:6:9-35
+13        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+13-->[androidx.core:core:1.7.0] C:\Users\arjav\.gradle\caches\transforms-3\d79cd730aff89e16bbe6bbee05f6ceb1\transformed\core-1.7.0\AndroidManifest.xml:24:18-86
+14        android:debuggable="true"
+15        android:extractNativeLibs="false"
+16        android:icon="@mipmap/ic_launcher"
+16-->D:\App Dev\servo\app\src\main\AndroidManifest.xml:7:9-43
+17        android:label="@string/app_name"
+17-->D:\App Dev\servo\app\src\main\AndroidManifest.xml:8:9-41
+18        android:roundIcon="@mipmap/ic_launcher_round"
+18-->D:\App Dev\servo\app\src\main\AndroidManifest.xml:9:9-54
+19        android:supportsRtl="true"
+19-->D:\App Dev\servo\app\src\main\AndroidManifest.xml:10:9-35
+20        android:testOnly="true"
+21        android:theme="@style/Theme.Servo" >
+21-->D:\App Dev\servo\app\src\main\AndroidManifest.xml:11:9-43
+22        <activity
+22-->D:\App Dev\servo\app\src\main\AndroidManifest.xml:12:9-14:40
+23            android:name="com.example.servo.ComplaintActivity"
+23-->D:\App Dev\servo\app\src\main\AndroidManifest.xml:13:13-46
+24            android:exported="false" />
+24-->D:\App Dev\servo\app\src\main\AndroidManifest.xml:14:13-37
+25        <activity
+25-->D:\App Dev\servo\app\src\main\AndroidManifest.xml:15:9-19:62
+26            android:name="com.example.servo.NewComplaint"
+26-->D:\App Dev\servo\app\src\main\AndroidManifest.xml:16:13-41
+27            android:exported="false"
+27-->D:\App Dev\servo\app\src\main\AndroidManifest.xml:17:13-37
+28            android:label="@string/title_activity_new_complaint"
+28-->D:\App Dev\servo\app\src\main\AndroidManifest.xml:18:13-65
+29            android:theme="@style/Theme.Servo.NoActionBar" />
+29-->D:\App Dev\servo\app\src\main\AndroidManifest.xml:19:13-59
+30        <activity
+30-->D:\App Dev\servo\app\src\main\AndroidManifest.xml:20:9-22:40
+31            android:name="com.example.servo.WorkerActivity"
+31-->D:\App Dev\servo\app\src\main\AndroidManifest.xml:21:13-43
+32            android:exported="false" />
+32-->D:\App Dev\servo\app\src\main\AndroidManifest.xml:22:13-37
+33        <activity
+33-->D:\App Dev\servo\app\src\main\AndroidManifest.xml:23:9-25:40
+34            android:name="com.example.servo.StudentActivity"
+34-->D:\App Dev\servo\app\src\main\AndroidManifest.xml:24:13-44
+35            android:exported="false" />
+35-->D:\App Dev\servo\app\src\main\AndroidManifest.xml:25:13-37
+36        <activity
+36-->D:\App Dev\servo\app\src\main\AndroidManifest.xml:26:9-28:40
+37            android:name="com.example.servo.LoginActivity"
+37-->D:\App Dev\servo\app\src\main\AndroidManifest.xml:27:13-42
+38            android:exported="false" />
+38-->D:\App Dev\servo\app\src\main\AndroidManifest.xml:28:13-37
+39        <activity
+39-->D:\App Dev\servo\app\src\main\AndroidManifest.xml:29:9-31:40
+40            android:name="com.example.servo.RegisterActivity"
+40-->D:\App Dev\servo\app\src\main\AndroidManifest.xml:30:13-45
+41            android:exported="false" />
+41-->D:\App Dev\servo\app\src\main\AndroidManifest.xml:31:13-37
+42        <activity
+42-->D:\App Dev\servo\app\src\main\AndroidManifest.xml:32:9-40:20
+43            android:name="com.example.servo.MainActivity"
+43-->D:\App Dev\servo\app\src\main\AndroidManifest.xml:33:13-41
+44            android:exported="true" >
+44-->D:\App Dev\servo\app\src\main\AndroidManifest.xml:34:13-36
+45            <intent-filter>
+45-->D:\App Dev\servo\app\src\main\AndroidManifest.xml:35:13-39:29
+46                <action android:name="android.intent.action.MAIN" />
+46-->D:\App Dev\servo\app\src\main\AndroidManifest.xml:36:17-69
+46-->D:\App Dev\servo\app\src\main\AndroidManifest.xml:36:25-66
+47
+48                <category android:name="android.intent.category.LAUNCHER" />
+48-->D:\App Dev\servo\app\src\main\AndroidManifest.xml:38:17-77
+48-->D:\App Dev\servo\app\src\main\AndroidManifest.xml:38:27-74
+49            </intent-filter>
+50        </activity>
+51
+52        <provider
+52-->[androidx.emoji2:emoji2:1.0.0] C:\Users\arjav\.gradle\caches\transforms-3\7a8fe7a0d27e6111d8f26a88e3f3f946\transformed\emoji2-1.0.0\AndroidManifest.xml:26:9-34:20
+53            android:name="androidx.startup.InitializationProvider"
+53-->[androidx.emoji2:emoji2:1.0.0] C:\Users\arjav\.gradle\caches\transforms-3\7a8fe7a0d27e6111d8f26a88e3f3f946\transformed\emoji2-1.0.0\AndroidManifest.xml:27:13-67
+54            android:authorities="com.example.servo.androidx-startup"
+54-->[androidx.emoji2:emoji2:1.0.0] C:\Users\arjav\.gradle\caches\transforms-3\7a8fe7a0d27e6111d8f26a88e3f3f946\transformed\emoji2-1.0.0\AndroidManifest.xml:28:13-68
+55            android:exported="false" >
+55-->[androidx.emoji2:emoji2:1.0.0] C:\Users\arjav\.gradle\caches\transforms-3\7a8fe7a0d27e6111d8f26a88e3f3f946\transformed\emoji2-1.0.0\AndroidManifest.xml:29:13-37
+56            <meta-data
+56-->[androidx.emoji2:emoji2:1.0.0] C:\Users\arjav\.gradle\caches\transforms-3\7a8fe7a0d27e6111d8f26a88e3f3f946\transformed\emoji2-1.0.0\AndroidManifest.xml:31:13-33:52
+57                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+57-->[androidx.emoji2:emoji2:1.0.0] C:\Users\arjav\.gradle\caches\transforms-3\7a8fe7a0d27e6111d8f26a88e3f3f946\transformed\emoji2-1.0.0\AndroidManifest.xml:32:17-75
+58                android:value="androidx.startup" />
+58-->[androidx.emoji2:emoji2:1.0.0] C:\Users\arjav\.gradle\caches\transforms-3\7a8fe7a0d27e6111d8f26a88e3f3f946\transformed\emoji2-1.0.0\AndroidManifest.xml:33:17-49
+59            <meta-data
+59-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\arjav\.gradle\caches\transforms-3\7c2b991ffee7d4db452bfe70f5605b71\transformed\lifecycle-process-2.4.0\AndroidManifest.xml:31:13-33:52
+60                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+60-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\arjav\.gradle\caches\transforms-3\7c2b991ffee7d4db452bfe70f5605b71\transformed\lifecycle-process-2.4.0\AndroidManifest.xml:32:17-78
+61                android:value="androidx.startup" />
+61-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\arjav\.gradle\caches\transforms-3\7c2b991ffee7d4db452bfe70f5605b71\transformed\lifecycle-process-2.4.0\AndroidManifest.xml:33:17-49
+62        </provider>
+63    </application>
+64
+65</manifest>
