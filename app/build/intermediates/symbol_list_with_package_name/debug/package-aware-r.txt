@@ -2647,7 +2647,6 @@ id beginning
 id bestChoice
 id blocking
 id bottom
-id bottom_navigation
 id bounce
 id bounceBoth
 id bounceEnd
@@ -2682,6 +2681,7 @@ id clockwise
 id closest
 id collapseActionView
 id complaintDesc
+id completedBtn
 id compress
 id confirm_button
 id constraint
@@ -2753,7 +2753,6 @@ id fixed
 id flip
 id floating
 id forever
-id fragment_container
 id fragment_container_view_tag
 id frost
 id ghost_view
@@ -2906,6 +2905,7 @@ id password_toggle
 id path
 id pathRelative
 id peekHeight
+id pendingBtn
 id percent
 id phoneno
 id pin
@@ -3159,8 +3159,10 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_complaint
+layout activity_completed
 layout activity_login
 layout activity_main
+layout activity_pending
 layout activity_register
 layout activity_student
 layout activity_worker

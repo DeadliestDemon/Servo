@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -23,10 +24,11 @@ import java.util.List;
 public class StudentActivity extends AppCompatActivity{
 
     private BottomNavigationView bottomNavigationView;
-    private Fragment selectorFragment;
+
 
     FloatingActionButton floatingActionButton;
-
+    Button Pending;
+    Button Completed;
     public static ArrayList<Integer> time = new ArrayList<>();
     public static ArrayList<Integer> date = new ArrayList<>();
     public static ArrayList<String> uid = new ArrayList<>();
@@ -39,40 +41,30 @@ public class StudentActivity extends AppCompatActivity{
         setContentView(R.layout.activity_student);
 
         floatingActionButton = findViewById(R.id.fab);
+        Pending = findViewById(R.id.pendingBtn);
+        Completed = findViewById(R.id.completedBtn);
 
 //        time = new ArrayList<>();
 //        date = new ArrayList<>();
 //        uid = new ArrayList<>();
 //        type = new ArrayList<>();
 
+        Pending.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(StudentActivity.this, PendingActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
 
-        bottomNavigationView = findViewById(R.id.bottom_navigation);
-//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//
-//                switch(item.getItemId())
-//                {
-//                    case R.id.nav_pending:
-//                selectorFragment = new PendingFragment();
-//                break;
-//
-//                    case R.id.nav_completed:
-//                selectorFragment = new CompletedFragment();
-//                break;
-//                }
-//                if (selectorFragment != null)
-//                {
-//                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectorFragment).commit();
-//                }
-//
-//                return true;
-//
-//
-//            }
-//        });
-//
-//        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new PendingFragment()).commit();
+            }
+        });
+
+        Completed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(StudentActivity.this, CompletedActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
+
+            }
+        });
+
 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override

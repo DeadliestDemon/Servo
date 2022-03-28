@@ -28,6 +28,10 @@
         "source": "D:\\App Dev\\servo\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.webp"
     },
     {
+        "merged": "D:\\App Dev\\servo\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_completed.xml.flat",
+        "source": "D:\\App Dev\\servo\\app\\src\\main\\res\\layout\\activity_completed.xml"
+    },
+    {
         "merged": "D:\\App Dev\\servo\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_register.xml.flat",
         "source": "D:\\App Dev\\servo\\app\\src\\main\\res\\layout\\activity_register.xml"
     },
@@ -92,6 +96,10 @@
         "source": "D:\\App Dev\\servo\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.webp"
     },
     {
+        "merged": "D:\\App Dev\\servo\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_pending.xml.flat",
+        "source": "D:\\App Dev\\servo\\app\\src\\main\\res\\layout\\activity_pending.xml"
+    },
+    {
         "merged": "D:\\App Dev\\servo\\app\\build\\intermediates\\merged_res\\debug\\drawable-anydpi-v24_ic_pending.xml.flat",
         "source": "D:\\App Dev\\servo\\app\\src\\main\\res\\drawable-anydpi-v24\\ic_pending.xml"
     },
@@ -132,16 +140,16 @@
         "source": "D:\\App Dev\\servo\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.webp"
     },
     {
+        "merged": "D:\\App Dev\\servo\\app\\build\\intermediates\\merged_res\\debug\\navigation_nav_graph2.xml.flat",
+        "source": "D:\\App Dev\\servo\\app\\src\\main\\res\\navigation\\nav_graph2.xml"
+    },
+    {
         "merged": "D:\\App Dev\\servo\\app\\build\\intermediates\\merged_res\\debug\\drawable-hdpi_ic_completed.png.flat",
         "source": "D:\\App Dev\\servo\\app\\src\\main\\res\\drawable-hdpi\\ic_completed.png"
     },
     {
         "merged": "D:\\App Dev\\servo\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
         "source": "D:\\App Dev\\servo\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.webp"
-    },
-    {
-        "merged": "D:\\App Dev\\servo\\app\\build\\intermediates\\merged_res\\debug\\navigation_nav_graph2.xml.flat",
-        "source": "D:\\App Dev\\servo\\app\\src\\main\\res\\navigation\\nav_graph2.xml"
     },
     {
         "merged": "D:\\App Dev\\servo\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxhdpi_ic_launcher_round.webp.flat",

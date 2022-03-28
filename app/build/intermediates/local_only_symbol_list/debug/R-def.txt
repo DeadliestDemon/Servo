@@ -22,15 +22,13 @@ id Servo
 id action_FirstFragment_to_SecondFragment
 id action_SecondFragment_to_FirstFragment
 id alreadyAuser
-id bottom
-id bottom_navigation
 id buttonStudent
 id buttonWorker
 id complaintDesc
+id completedBtn
 id dateComp
 id email
 id fab
-id fragment_container
 id imageView
 id isComp
 id logPass
@@ -44,6 +42,7 @@ id newComplaintBtn
 id newRegister
 id notAuser
 id password
+id pendingBtn
 id phoneno
 id profession
 id radioGroup
@@ -61,8 +60,10 @@ id typeComp
 id uidComp
 id username
 layout activity_complaint
+layout activity_completed
 layout activity_login
 layout activity_main
+layout activity_pending
 layout activity_register
 layout activity_student
 layout activity_worker

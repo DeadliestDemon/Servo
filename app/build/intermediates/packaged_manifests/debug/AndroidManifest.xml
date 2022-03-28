@@ -20,6 +20,12 @@
         android:testOnly="true"
         android:theme="@style/Theme.Servo" >
         <activity
+            android:name="com.example.servo.CompletedActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.servo.PendingActivity"
+            android:exported="false" />
+        <activity
             android:name="com.example.servo.ComplaintActivity"
             android:exported="false" />
         <activity
