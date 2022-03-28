@@ -29,10 +29,7 @@ public class StudentActivity extends AppCompatActivity{
     FloatingActionButton floatingActionButton;
     Button Pending;
     Button Completed;
-    public static ArrayList<Integer> time = new ArrayList<>();
-    public static ArrayList<Integer> date = new ArrayList<>();
-    public static ArrayList<String> uid = new ArrayList<>();
-    public static ArrayList<String> type = new ArrayList<>();
+
 
 
     @Override
@@ -44,10 +41,7 @@ public class StudentActivity extends AppCompatActivity{
         Pending = findViewById(R.id.pendingBtn);
         Completed = findViewById(R.id.completedBtn);
 
-//        time = new ArrayList<>();
-//        date = new ArrayList<>();
-//        uid = new ArrayList<>();
-//        type = new ArrayList<>();
+
 
         Pending.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,21 +68,7 @@ public class StudentActivity extends AppCompatActivity{
             }
         });
 
-        time.add(2300);
-        time.add(2340);
-        time.add(2200);
 
-        date.add(25122022);
-        date.add(25122022);
-        date.add(25122022);
-
-        uid.add("2565");
-        uid.add("2545");
-        uid.add("2625");
-
-        type.add("Electrician");
-        type.add("Carpenter");
-        type.add("Cleaner");
 
 
 

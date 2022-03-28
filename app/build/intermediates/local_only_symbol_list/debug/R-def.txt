@@ -26,7 +26,10 @@ id buttonStudent
 id buttonWorker
 id complaintDesc
 id completedBtn
+id confirmCompletedTasks
 id dateComp
+id detailsDesc
+id detailsType
 id email
 id fab
 id imageView
@@ -43,6 +46,7 @@ id newRegister
 id notAuser
 id password
 id pendingBtn
+id pendingView
 id phoneno
 id profession
 id radioGroup
@@ -52,6 +56,7 @@ id roomno
 id statusComp
 id textView
 id textView2
+id textView3
 id textView4
 id textView5
 id textView6
@@ -60,6 +65,7 @@ id typeComp
 id uidComp
 id username
 layout activity_complaint
+layout activity_complaint_details
 layout activity_completed
 layout activity_login
 layout activity_main

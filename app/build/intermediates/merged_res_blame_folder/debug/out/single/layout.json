@@ -32,6 +32,10 @@
         "source": "D:\\App Dev\\servo\\app\\src\\main\\res\\layout\\activity_student.xml"
     },
     {
+        "merged": "D:\\App Dev\\servo\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_complaint_details.xml",
+        "source": "D:\\App Dev\\servo\\app\\src\\main\\res\\layout\\activity_complaint_details.xml"
+    },
+    {
         "merged": "D:\\App Dev\\servo\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\retrieved_layout.xml",
         "source": "D:\\App Dev\\servo\\app\\src\\main\\res\\layout\\retrieved_layout.xml"
     }

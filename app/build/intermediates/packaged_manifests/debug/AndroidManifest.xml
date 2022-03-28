@@ -20,6 +20,9 @@
         android:testOnly="true"
         android:theme="@style/Theme.Servo" >
         <activity
+            android:name="com.example.servo.ComplaintDetails"
+            android:exported="false" />
+        <activity
             android:name="com.example.servo.CompletedActivity"
             android:exported="false" />
         <activity

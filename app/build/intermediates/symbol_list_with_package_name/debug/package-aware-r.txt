@@ -2683,6 +2683,7 @@ id collapseActionView
 id complaintDesc
 id completedBtn
 id compress
+id confirmCompletedTasks
 id confirm_button
 id constraint
 id container
@@ -2710,6 +2711,8 @@ id design_menu_item_action_area
 id design_menu_item_action_area_stub
 id design_menu_item_text
 id design_navigation_view
+id detailsDesc
+id detailsType
 id dialog_button
 id dimensions
 id direct
@@ -2906,6 +2909,7 @@ id path
 id pathRelative
 id peekHeight
 id pendingBtn
+id pendingView
 id percent
 id phoneno
 id pin
@@ -3018,6 +3022,7 @@ id textStart
 id textTop
 id textView
 id textView2
+id textView3
 id textView4
 id textView5
 id textView6
@@ -3159,6 +3164,7 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_complaint
+layout activity_complaint_details
 layout activity_completed
 layout activity_login
 layout activity_main

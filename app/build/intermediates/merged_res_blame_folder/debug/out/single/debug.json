@@ -104,6 +104,10 @@
         "source": "D:\\App Dev\\servo\\app\\src\\main\\res\\drawable-anydpi-v24\\ic_pending.xml"
     },
     {
+        "merged": "D:\\App Dev\\servo\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_complaint_details.xml.flat",
+        "source": "D:\\App Dev\\servo\\app\\src\\main\\res\\layout\\activity_complaint_details.xml"
+    },
+    {
         "merged": "D:\\App Dev\\servo\\app\\build\\intermediates\\merged_res\\debug\\drawable-anydpi-v24_ic_completed.xml.flat",
         "source": "D:\\App Dev\\servo\\app\\src\\main\\res\\drawable-anydpi-v24\\ic_completed.xml"
     },

@@ -5,10 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.servo.R;
@@ -18,7 +18,7 @@ import java.lang.String;
 
 public final class RetrievedLayoutBinding implements ViewBinding {
   @NonNull
-  private final LinearLayout rootView;
+  private final CardView rootView;
 
   @NonNull
   public final TextView dateComp;
@@ -38,7 +38,7 @@ public final class RetrievedLayoutBinding implements ViewBinding {
   @NonNull
   public final TextView uidComp;
 
-  private RetrievedLayoutBinding(@NonNull LinearLayout rootView, @NonNull TextView dateComp,
+  private RetrievedLayoutBinding(@NonNull CardView rootView, @NonNull TextView dateComp,
       @NonNull CheckBox isComp, @NonNull TextView statusComp, @NonNull TextView timeComp,
       @NonNull TextView typeComp, @NonNull TextView uidComp) {
     this.rootView = rootView;
@@ -52,7 +52,7 @@ public final class RetrievedLayoutBinding implements ViewBinding {
 
   @Override
   @NonNull
-  public LinearLayout getRoot() {
+  public CardView getRoot() {
     return rootView;
   }
 
@@ -113,8 +113,8 @@ public final class RetrievedLayoutBinding implements ViewBinding {
         break missingId;
       }
 
-      return new RetrievedLayoutBinding((LinearLayout) rootView, dateComp, isComp, statusComp,
-          timeComp, typeComp, uidComp);
+      return new RetrievedLayoutBinding((CardView) rootView, dateComp, isComp, statusComp, timeComp,
+          typeComp, uidComp);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
