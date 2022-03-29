@@ -20,5 +20,9 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="addComplaint">Add a Complaint</string>
     <string name="title_activity_pending">PendingActivity</string>
+    <string name="tagLine">Never Stop Complaining!</string>
+    <string name="appName">Servo</string>
+    <string name="SignUp">Sign up</string>
+    <string name="SignIn">Sign in</string>
 
 </resources>
