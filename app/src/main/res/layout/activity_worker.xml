@@ -6,4 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".WorkerActivity">
 
+    <Button
+        android:id="@+id/workerPendingBtn"
+        android:layout_width="112dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="244dp"
+        android:layout_marginEnd="134dp"
+        android:text="Pending"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.891"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/workerCompletedBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Completed"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/workerPendingBtn" />
 </androidx.constraintlayout.widget.ConstraintLayout>

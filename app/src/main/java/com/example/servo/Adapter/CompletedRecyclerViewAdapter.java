@@ -67,8 +67,7 @@ public class CompletedRecyclerViewAdapter extends RecyclerView.Adapter<Completed
         public TextView ComplaintDate;
 
 
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
+        public ViewHolder(@NonNull View itemView) {            super(itemView);
 
             itemView.setOnClickListener(this);
 

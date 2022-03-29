@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Servo">
         <activity
+            android:name=".WorkerPendingActivity"
+            android:exported="false" />
+        <activity
             android:name=".ComplaintDetails"
             android:exported="false" />
         <activity

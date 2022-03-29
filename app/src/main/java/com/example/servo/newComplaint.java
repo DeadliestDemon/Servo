@@ -11,8 +11,8 @@ public class newComplaint {
     private long roomno;
     private long rollno;
     private String Description;
-    private long phoneStudent;
-    private long phoneWorker;
+    private String phoneStudent;
+    private String phoneWorker;
     private long completedTime;
     private long completedDate;
 
@@ -88,15 +88,15 @@ public class newComplaint {
         Description = description;
     }
 
-    public long getPhoneStudent() {
+    public String getPhoneStudent() {
         return phoneStudent;
     }
 
-    public void setPhoneStudent(long phoneStudent) {
+    public void setPhoneStudent(String phoneStudent) {
         this.phoneStudent = phoneStudent;
     }
 
-    public long getPhoneWorker() {
+    public String getPhoneWorker() {
         return phoneWorker;
     }
 
@@ -116,7 +116,7 @@ public class newComplaint {
         this.completedDate = completedDate;
     }
 
-    public void setPhoneWorker(long phoneWorker) {
+    public void setPhoneWorker(String phoneWorker) {
         this.phoneWorker = phoneWorker;
     }
 
@@ -134,7 +134,7 @@ public class newComplaint {
 //        this.phoneWorker = phoneWorker;
 //    }
 
-    public newComplaint(long time, long date, String type, String uid, String studentID, String workerID, long roomno, long rollno, String description, long phoneStudent, long phoneWorker, long completedTime, long completedDate) {
+    public newComplaint(long time, long date, String type, String uid, String studentID, String workerID, long roomno, long rollno, String description, String phoneStudent, String phoneWorker, long completedTime, long completedDate) {
         this.time = time;
         this.date = date;
         this.type = type;
