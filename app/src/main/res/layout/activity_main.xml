@@ -31,7 +31,7 @@
         android:backgroundTint="#FFFFFF"
         android:text="@string/SignIn"
         android:textAllCaps="false"
-        android:textColor="#F25D9C"
+        android:textColor="@color/textColorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
