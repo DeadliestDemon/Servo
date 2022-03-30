@@ -3,7 +3,6 @@ package com.example.servo.Adapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,23 +11,22 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.servo.ComplaintDetails;
 import com.example.servo.R;
-import com.example.servo.newComplaint;
+import com.example.servo.NewComplaint;
 
 import java.util.ArrayList;
 
 public class PendingRecyclerViewAdapter extends RecyclerView.Adapter<PendingRecyclerViewAdapter.ViewHolder> {
 
     private Context context;
-    private ArrayList<newComplaint> complaints;
-    private ArrayList<newComplaint> completedComplaints;
+    private ArrayList<NewComplaint> complaints;
+    private ArrayList<NewComplaint> completedComplaints;
 
 
-    public PendingRecyclerViewAdapter(Context context, ArrayList<newComplaint> complaints) {
+    public PendingRecyclerViewAdapter(Context context, ArrayList<NewComplaint> complaints) {
         this.context = context;
         this.complaints = complaints;
         completedComplaints = new ArrayList<>();
@@ -48,7 +46,7 @@ public class PendingRecyclerViewAdapter extends RecyclerView.Adapter<PendingRecy
     // what will happen after getting card object
     @Override
     public void onBindViewHolder(@NonNull PendingRecyclerViewAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        newComplaint currComp = complaints.get(position);
+        NewComplaint currComp = complaints.get(position);
         String date = String.valueOf(currComp.getDate());
         String time = String.valueOf(currComp.getTime());
         holder.Date.setText(date);
@@ -61,7 +59,7 @@ public class PendingRecyclerViewAdapter extends RecyclerView.Adapter<PendingRecy
             public void onClick(View view) {
                 if (holder.checkBox.isChecked())
                 {
-                    newComplaint temp = complaints.get(position);
+                    NewComplaint temp = complaints.get(position);
                     if (temp != null)
                     {
                         completedComplaints.add(temp);
@@ -70,7 +68,7 @@ public class PendingRecyclerViewAdapter extends RecyclerView.Adapter<PendingRecy
                 }
                 else
                 {
-                    newComplaint temp = complaints.get(position);
+                    NewComplaint temp = complaints.get(position);
                     if (temp != null)
                     {
                         completedComplaints.remove(temp);
@@ -120,7 +118,7 @@ public class PendingRecyclerViewAdapter extends RecyclerView.Adapter<PendingRecy
         public void onClick(View view) {
 //            Log.d("Yo boi: ","sdf dsf");
             int pos = this.getAdapterPosition();
-            newComplaint tmp = complaints.get(pos);
+            NewComplaint tmp = complaints.get(pos);
             Intent intent = new Intent(context, ComplaintDetails.class);
             intent.putExtra("Rtype", tmp.getType());
             intent.putExtra("Rdesc", tmp.getDescription());
@@ -130,7 +128,7 @@ public class PendingRecyclerViewAdapter extends RecyclerView.Adapter<PendingRecy
 
     }
 
-    public ArrayList<newComplaint> listOfCompleted()
+    public ArrayList<NewComplaint> listOfCompleted()
     {
         return completedComplaints;
     }

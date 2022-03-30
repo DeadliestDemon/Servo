@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
-import com.example.servo.Adapter.PendingRecyclerViewAdapter;
 import com.example.servo.Adapter.WorkerPendingRecycViewAdapter;
 
 import java.util.ArrayList;
@@ -19,7 +18,7 @@ public class WorkerPendingActivity extends AppCompatActivity {
     public static ArrayList<String> phone = new ArrayList<>();
     public static ArrayList<Integer> room = new ArrayList<>();
 
-    private ArrayList<newComplaint> complaints;
+    private ArrayList<NewComplaint> complaints;
 //    private ArrayList<newComplaint> completedComplaints;
 
     private RecyclerView recyclerView;
@@ -58,11 +57,11 @@ public class WorkerPendingActivity extends AppCompatActivity {
         room.add(5401);
         room.add(5402);
 
-        complaints = new ArrayList<newComplaint>();
+        complaints = new ArrayList<NewComplaint>();
 
         for (int i=0; i<6; i++)
         {
-            newComplaint currComp = new newComplaint(time.get(i%3),date.get(i%3),"Electrician",uid.get(i%3),"asdf","sadfa",2534,515,"ak jdfnksd fiu","957425774","576541353",1800, 23102022);
+            NewComplaint currComp = new NewComplaint(time.get(i%3),date.get(i%3),"Electrician",uid.get(i%3),"asdf","sadfa",2534,515,"ak jdfnksd fiu","957425774","576541353",1800, 23102022);
             complaints.add(currComp);
         }
 

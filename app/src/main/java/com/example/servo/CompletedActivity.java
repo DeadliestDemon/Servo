@@ -14,7 +14,7 @@ public class CompletedActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private CompletedRecyclerViewAdapter completedRecyclerViewAdapter;
-    private ArrayList<newComplaint> copletedComplaints;
+    private ArrayList<NewComplaint> copletedComplaints;
 
     public static ArrayList<String> type = new ArrayList<>();
     public static ArrayList<Integer> time = new ArrayList<>();
@@ -66,11 +66,11 @@ public class CompletedActivity extends AppCompatActivity {
         completeddate.add(22112022);
         completeddate.add(24112022);
 
-        copletedComplaints = new ArrayList<newComplaint>();
+        copletedComplaints = new ArrayList<NewComplaint>();
 
         for (int i=0; i<6; i++)
         {
-            newComplaint currComp = new newComplaint(time.get(i%3),date.get(i%3),type.get(i%3),uid.get(i%3),"asdf","sadfa",2534,515,"ak jdfnksd fiu","957425774","576541353",completedtime.get(i%3),completeddate.get(i%3));
+            NewComplaint currComp = new NewComplaint(time.get(i%3),date.get(i%3),type.get(i%3),uid.get(i%3),"asdf","sadfa",2534,515,"ak jdfnksd fiu","957425774","576541353",completedtime.get(i%3),completeddate.get(i%3));
             copletedComplaints.add(currComp);
         }
 

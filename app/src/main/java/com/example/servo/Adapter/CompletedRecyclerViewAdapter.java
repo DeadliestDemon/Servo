@@ -13,16 +13,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.servo.ComplaintDetails;
 import com.example.servo.R;
-import com.example.servo.newComplaint;
+import com.example.servo.NewComplaint;
 
 import java.util.ArrayList;
 
 public class CompletedRecyclerViewAdapter extends RecyclerView.Adapter<CompletedRecyclerViewAdapter.ViewHolder> {
 
     private Context context;
-    private ArrayList<newComplaint> completedComplaints;
+    private ArrayList<NewComplaint> completedComplaints;
 
-    public CompletedRecyclerViewAdapter(Context context, ArrayList<newComplaint> completedComplaints) {
+    public CompletedRecyclerViewAdapter(Context context, ArrayList<NewComplaint> completedComplaints) {
         this.context = context;
         this.completedComplaints = completedComplaints;
     }
@@ -39,7 +39,7 @@ public class CompletedRecyclerViewAdapter extends RecyclerView.Adapter<Completed
     // what to do with object
     @Override
     public void onBindViewHolder(@NonNull CompletedRecyclerViewAdapter.ViewHolder holder, int position) {
-        newComplaint tmp = completedComplaints.get(position);
+        NewComplaint tmp = completedComplaints.get(position);
 
         holder.CompletedUid.setText(tmp.getUid());
         holder.CompletedType.setText(tmp.getType());
@@ -88,7 +88,7 @@ public class CompletedRecyclerViewAdapter extends RecyclerView.Adapter<Completed
         public void onClick(View view) {
             Log.d("df","dsfgfdg");
             int pos = this.getAdapterPosition();
-            newComplaint temp = completedComplaints.get(pos);
+            NewComplaint temp = completedComplaints.get(pos);
             Intent intent = new Intent(context, ComplaintDetails.class);
             intent.putExtra("Rtype", temp.getType());
             intent.putExtra("Rdesc", temp.getDescription());

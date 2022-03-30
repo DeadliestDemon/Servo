@@ -10,16 +10,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.servo.R;
-import com.example.servo.newComplaint;
+import com.example.servo.NewComplaint;
 
 import java.util.ArrayList;
 
 public class WorkerPendingRecycViewAdapter extends RecyclerView.Adapter<WorkerPendingRecycViewAdapter.ViewHolder> {
 
     private Context context;
-    private ArrayList<newComplaint> complaints;
+    private ArrayList<NewComplaint> complaints;
 
-    public WorkerPendingRecycViewAdapter(Context context, ArrayList<newComplaint> complaints) {
+    public WorkerPendingRecycViewAdapter(Context context, ArrayList<NewComplaint> complaints) {
         this.context = context;
         this.complaints = complaints;
     }
@@ -35,7 +35,7 @@ public class WorkerPendingRecycViewAdapter extends RecyclerView.Adapter<WorkerPe
 
     @Override
     public void onBindViewHolder(@NonNull WorkerPendingRecycViewAdapter.ViewHolder holder, int position) {
-        newComplaint tmp = complaints.get(position);
+        NewComplaint tmp = complaints.get(position);
 
         holder.workerUid.setText(tmp.getUid());
         holder.workerDate.setText(String.valueOf(tmp.getDate()));

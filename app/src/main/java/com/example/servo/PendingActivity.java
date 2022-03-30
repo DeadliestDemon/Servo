@@ -18,8 +18,8 @@ public class PendingActivity extends AppCompatActivity {
     public static ArrayList<String> uid = new ArrayList<>();
     public static ArrayList<String> type = new ArrayList<>();
 
-    private ArrayList<newComplaint> complaints;
-    private ArrayList<newComplaint> completedComplaints;
+    private ArrayList<NewComplaint> complaints;
+    private ArrayList<NewComplaint> completedComplaints;
 
     private RecyclerView recyclerView;
     private PendingRecyclerViewAdapter pendingRecyclerViewAdapter;
@@ -49,11 +49,11 @@ public class PendingActivity extends AppCompatActivity {
         type.add("Carpenter");
         type.add("Cleaner");
 
-        complaints = new ArrayList<newComplaint>();
+        complaints = new ArrayList<NewComplaint>();
 
         for (int i=0; i<6; i++)
         {
-            newComplaint currComp = new newComplaint(time.get(i%3),date.get(i%3),type.get(i%3),uid.get(i%3),"asdf","sadfa",2534,515,"ak jdfnksd fiu","957425774","576541353",1800, 23102022);
+            NewComplaint currComp = new NewComplaint(time.get(i%3),date.get(i%3),type.get(i%3),uid.get(i%3),"asdf","sadfa",2534,515,"ak jdfnksd fiu","957425774","576541353",1800, 23102022);
             complaints.add(currComp);
         }
 
@@ -72,7 +72,7 @@ public class PendingActivity extends AppCompatActivity {
 
         for (int i=0; i<completedComplaints.size(); i++)
         {
-            newComplaint tmp = completedComplaints.get(i);
+            NewComplaint tmp = completedComplaints.get(i);
 
             for (int j = 0;j < complaints.size(); j++)
             {

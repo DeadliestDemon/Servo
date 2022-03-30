@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.servo">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -24,11 +26,11 @@
         <activity
             android:name=".ComplaintActivity"
             android:exported="false" />
-        <activity
-            android:name=".NewComplaint"
-            android:exported="false"
-            android:label="@string/title_activity_new_complaint"
-            android:theme="@style/Theme.Servo.NoActionBar" />
+<!--        <activity-->
+<!--            android:name=".NewComplaint"-->
+<!--            android:exported="false"-->
+<!--            android:label="@string/title_activity_new_complaint"-->
+<!--            android:theme="@style/Theme.Servo.NoActionBar" />-->
         <activity
             android:name=".WorkerActivity"
             android:exported="false" />

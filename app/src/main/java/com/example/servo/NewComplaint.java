@@ -1,13 +1,14 @@
 package com.example.servo;
 
-public class newComplaint {
+public class NewComplaint {
+
 
     private long time;
     private long date;
     private String type;
     private String uid;
     private String studentID;
-    private String workerID;
+    private String workerID; // null
     private long roomno;
     private long rollno;
     private String Description;
@@ -134,7 +135,7 @@ public class newComplaint {
 //        this.phoneWorker = phoneWorker;
 //    }
 
-    public newComplaint(long time, long date, String type, String uid, String studentID, String workerID, long roomno, long rollno, String description, String phoneStudent, String phoneWorker, long completedTime, long completedDate) {
+    public NewComplaint(long time, long date, String type, String uid, String studentID, String workerID, long roomno, long rollno, String description, String phoneStudent, String phoneWorker, long completedTime, long completedDate) {
         this.time = time;
         this.date = date;
         this.type = type;
