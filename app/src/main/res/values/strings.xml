@@ -4,6 +4,7 @@
     <string-array name="Profession">
         <item>Electrician</item>
         <item>Carpenter</item>
+        <item>Plumber</item>
         <item>Cleaner</item>
         <item>Others</item>
     </string-array>
@@ -27,5 +28,13 @@
     <string name="username">Enter Username</string>
     <string name="password">Password</string>
     <string name="notAUser">Not a user?  Register</string>
+    <string name="alreadyAUser">Already a user?  Login</string>
+    <string name="mail">Email</string>
+    <string name="phone">Mobile No.</string>
+    <string name="register">Register</string>
+    <string name="student">Student</string>
+    <string name="employee">Employee</string>
+    <string name="rollNo">Enter roll no</string>
+    <string name="roomNo">Enter room no</string>
 
 </resources>
