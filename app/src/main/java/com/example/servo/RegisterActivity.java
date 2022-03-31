@@ -7,6 +7,7 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -15,6 +16,16 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.servo.Api.RetrofitClient;
+import com.example.servo.Models.NewUser;
+
+import org.json.JSONObject;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class RegisterActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -31,6 +42,11 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
     EditText RoomNo;
     Button registerButton;
     String profession;
+
+    String url = "http://localhost:8000/api/";
+
+    NewUser currUser;
+    String token;
 
     @SuppressLint({"ResourceAsColor", "NewApi"})
     @Override
@@ -106,8 +122,69 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
         } else if (room.isEmpty()) {
             Toast.makeText(this, "Please fill room number", Toast.LENGTH_SHORT).show();
         } else {
+
+            //chk
+            Call<ResponseBody> call = RetrofitClient
+                    .getInstance()
+                    .getApi()
+                    .createStudent(user,mail,pass,pass,phone,roll,room);
+
+            call.enqueue(new Callback<ResponseBody>() {
+                @Override
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+
+                    String s = null;
+                    try {
+                        if (response.code() == 201) {
+
+                            s = response.body().toString();
+                            Toast.makeText(RegisterActivity.this, s, Toast.LENGTH_SHORT).show();
+                            Log.i("err: ",s);
+
+
+                        } else {
+                            s = response.errorBody().toString();
+                            Toast.makeText(RegisterActivity.this, s, Toast.LENGTH_SHORT).show();
+                            Log.i("err: ",s);
+
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        e.printStackTrace();
+                        Log.i("err: ",e.toString());
+
+                    }
+
+                    if (s != null)
+                    {
+                        try {
+                            JSONObject jsonObject = new JSONObject(s);
+                            int id = jsonObject.getInt("id");
+                            token = jsonObject.getString("token");
+                            currUser = new NewUser(id,mail,user,pass,pass,phone,roll,room,"STUDENT",token);
+
+
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+
+                }
+
+                @Override
+                public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    Toast.makeText(RegisterActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            //endchk
+
             // if is successful
             Intent intent = new Intent(RegisterActivity.this, StudentActivity.class);
+            intent.putExtra("token",token);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         }
