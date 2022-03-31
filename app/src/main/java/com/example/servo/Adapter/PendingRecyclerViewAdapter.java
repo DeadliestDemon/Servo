@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.servo.ComplaintDetails;
 import com.example.servo.R;
-import com.example.servo.NewComplaint;
+import com.example.servo.Models.NewComplaint;
 
 import java.util.ArrayList;
 

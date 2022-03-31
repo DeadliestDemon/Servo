@@ -1,4 +1,4 @@
-package com.example.servo;
+package com.example.servo.Models;
 
 public class NewComplaint {
 

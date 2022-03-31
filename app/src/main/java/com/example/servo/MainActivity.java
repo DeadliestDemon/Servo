@@ -7,10 +7,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.servo.Models.NewUser;
+
 public class MainActivity extends AppCompatActivity {
 
     private Button register;
     private Button login;
+
+    NewUser currUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

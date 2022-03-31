@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 
 import com.example.servo.Adapter.WorkerPendingRecycViewAdapter;
+import com.example.servo.Models.NewComplaint;
 
 import java.util.ArrayList;
 

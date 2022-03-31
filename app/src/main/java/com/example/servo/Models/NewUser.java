@@ -1,4 +1,4 @@
-package com.example.servo;
+package com.example.servo.Models;
 
 public class NewUser {
     private int id;
@@ -9,10 +9,8 @@ public class NewUser {
     private String contact_number;
     private String rollno;
     private String room_number;
-    private String usertype;
-    private String token;
 
-    public NewUser(int id, String email, String username, String password, String password2, String contact_number, String rollno, String room_number, String usertype) {
+    public NewUser(int id, String email, String username, String password, String password2, String contact_number, String rollno, String room_number, String usertype, String token) {
         this.id = id;
         this.email = email;
         this.username = username;
@@ -22,7 +20,23 @@ public class NewUser {
         this.rollno = rollno;
         this.room_number = room_number;
         this.usertype = usertype;
+        this.token = token;
     }
+
+    private String usertype;
+    private String token;
+
+//    public NewUser(int id, String email, String username, String password, String password2, String contact_number, String rollno, String room_number, String usertype) {
+//        this.id = id;
+//        this.email = email;
+//        this.username = username;
+//        this.password = password;
+//        this.password2 = password2;
+//        this.contact_number = contact_number;
+//        this.rollno = rollno;
+//        this.room_number = room_number;
+//        this.usertype = usertype;
+//    }
 
     public String getToken() {
         return token;

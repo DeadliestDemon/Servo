@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.servo.Adapter.PendingRecyclerViewAdapter;
+import com.example.servo.Models.NewComplaint;
 
 import java.util.ArrayList;
 
