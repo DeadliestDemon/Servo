@@ -36,5 +36,7 @@
     <string name="employee">Employee</string>
     <string name="rollNo">Enter roll no</string>
     <string name="roomNo">Enter room no</string>
+    <string name="addComplain">Add Complaint</string>
+    <string name="addDes">Add Description</string>
 
 </resources>
