@@ -74,6 +74,7 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.Profession, R.layout.custom_spinner);
         adapter.setDropDownViewResource(R.layout.custom_spinner_dropdown);
         spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
         registerButton.setOnClickListener(view -> {
             if(isStudent) {
                 registerStudent();
