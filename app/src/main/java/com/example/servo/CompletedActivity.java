@@ -71,8 +71,8 @@ public class CompletedActivity extends AppCompatActivity {
 
         for (int i=0; i<6; i++)
         {
-            NewComplaint currComp = new NewComplaint(time.get(i%3),date.get(i%3),type.get(i%3),uid.get(i%3),"asdf","sadfa",2534,515,"ak jdfnksd fiu","957425774","576541353",completedtime.get(i%3),completeddate.get(i%3));
-            copletedComplaints.add(currComp);
+//            NewComplaint currComp = new NewComplaint(time.get(i%3).toString(),date.get(i%3).toString(),type.get(i%3),uid.get(i%3),"asdf","sadfa",2534,515,"ak jdfnksd fiu","957425774","576541353",completedtime.get(i%3),completeddate.get(i%3));
+//            copletedComplaints.add(currComp);
         }
 
         completedRecyclerViewAdapter = new CompletedRecyclerViewAdapter(CompletedActivity.this, copletedComplaints);

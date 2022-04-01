@@ -16,6 +16,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.servo.Api.NewStudentUser;
 import com.example.servo.Api.RetrofitClient;
 import com.example.servo.Models.NewUser;
 import org.json.JSONObject;
@@ -125,15 +127,14 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
         } else {
 
             //chk
-            Call<ResponseBody> call = RetrofitClient
+            Call<NewStudentUser> call = RetrofitClient
                     .getInstance()
                     .getApi()
                     .createStudent(user,mail,pass,pass,phone,roll,room);
 
-            call.enqueue(new Callback<ResponseBody>() {
+            call.enqueue(new Callback<NewStudentUser>() {
                 @Override
-                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-
+                public void onResponse(Call<NewStudentUser> call, Response<NewStudentUser> response) {
                     String s = null;
                     try {
                         if (response.code() == 201) {
@@ -172,12 +173,11 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
                         }
                     }
 
-
                 }
 
                 @Override
-                public void onFailure(Call<ResponseBody> call, Throwable t) {
-                    Toast.makeText(RegisterActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                public void onFailure(Call<NewStudentUser> call, Throwable t) {
+
                 }
             });
 
