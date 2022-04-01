@@ -12,14 +12,30 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.servo.Api.LoginResponse;
+import com.example.servo.Api.NewStudentUser;
+import com.example.servo.Api.NewWorkerUser;
+import com.example.servo.Api.RetrofitClient;
+import com.example.servo.Models.NewUser;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+
 public class LoginActivity extends AppCompatActivity {
 
     EditText LogUser;
     EditText LogPass;
 
     Button loginButton;
-
+    String token;
     TextView notuser;
+
+    NewStudentUser currUser;
+    NewUser loggedUser;
+    String type;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,12 +70,130 @@ public class LoginActivity extends AppCompatActivity {
                 } else if (pass.isEmpty()) {
                     Toast.makeText(LoginActivity.this, "Please fill password", Toast.LENGTH_SHORT).show();
                 } else {
+
+                    //chk
+//                    token = null;
+                    Call<LoginResponse> call = RetrofitClient
+                            .getInstance()
+                            .getApi()
+                            .userLogin(user,pass);
+
+                    call.enqueue(new Callback<LoginResponse>() {
+                        @Override
+                        public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+                            LoginResponse loginResponse = response.body();
+
+                            if(response.code() == 200)
+                            {
+
+                                token = loginResponse.getToken();
+//                                Toast.makeText(LoginActivity.this, "User logged in successfully "+token, Toast.LENGTH_SHORT).show();
+
+
+
+
+
+
+
+
+
+
+
+                            }
+                            else
+                            {
+                                String s = response.errorBody().toString();
+                                Toast.makeText(LoginActivity.this, s, Toast.LENGTH_SHORT).show();
+
+                            }
+
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<LoginResponse> call, Throwable t) {
+
+                        }
+                    });
+
+                    //endchk
+
+
                     // if is successful
-                    Intent intent = new Intent(LoginActivity.this, StudentActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
+                    String tmp2 = "Token " + token;
+//                    String tmp2 = "Token 701db904612321df94ef4554dadff06ae3ecc485";
+//                    Toast.makeText(LoginActivity.this, tmp2, Toast.LENGTH_LONG).show();
+
+                    //chk2
+                    // synchronise
+//                    if(token != null) {
+                        Call<NewStudentUser> call2 = RetrofitClient
+                                .getInstance()
+                                .getApi()
+                                .getUserDetails(tmp2, user);
+
+                        call2.enqueue(new Callback<NewStudentUser>() {
+                            @Override
+                            public void onResponse(Call<NewStudentUser> call, Response<NewStudentUser> response) {
+//                                        currUser = response.body();
+////                                        loggedUser = new NewUser(currUser.getId(),currUser.getEmail(), currUser.getUsername(), pass,pass, currUser.getContact_number(), currUser.getRoll_number(), currUser.getRoom_number(), currUser.getUsertype(), currUser.getToken());
+////                                    type = currUser.getUsertype();
+//                            Toast.makeText(LoginActivity.this, currUser.getUsertype(), Toast.LENGTH_SHORT).show();
+
+                                if (response.code() == 200) {
+                                    currUser = response.body();
+                                    loggedUser = new NewUser(currUser.getId(), currUser.getEmail(), currUser.getUsername(), pass, pass, currUser.getContact_number(), currUser.getRoll_number(), currUser.getRoom_number(), currUser.getUsertype(), currUser.getToken());
+                                    type = currUser.getUsertype();
+//                                    Toast.makeText(LoginActivity.this, "Logged in Successfully " + type, Toast.LENGTH_SHORT).show();
+
+                                } else {
+                                    String s = response.errorBody().toString();
+                                    Toast.makeText(LoginActivity.this, s, Toast.LENGTH_SHORT).show();
+
+                                }
+
+
+                            }
+
+                            @Override
+                            public void onFailure(Call<NewStudentUser> call, Throwable t) {
+
+                            }
+                        });
+
+                        //endchk2
+
+
+                    if (type != null && type.equals("STUDENT"))
+                    {
+                        Intent intent = new Intent(LoginActivity.this, StudentActivity.class);
+                        intent.putExtra("token",tmp2);
+//                        Toast.makeText(LoginActivity.this, tmp2, Toast.LENGTH_LONG).show();
+
+//                        token = null;
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                    }
+                    else if(type != null && (type.equals("PLUMBER") || type.equals("CARPENTER") || type.equals("ELECTRICIAN") || type.equals("CLEANER") || type.equals("OTHERS") ))
+                    {
+                        Intent intent = new Intent(LoginActivity.this, WorkerActivity.class);
+                        intent.putExtra("token",tmp2);
+//                        token = null;
+
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                    }
+                    else
+                    {
+                        Toast.makeText(LoginActivity.this, "Error", Toast.LENGTH_SHORT).show();
+                    }
+
+                    }
+
+
+
                 }
-            }
+//            }
         });
     }
 }

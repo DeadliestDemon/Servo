@@ -7,24 +7,25 @@ public class NewUser {
     private String password;
     private String password2;
     private String contact_number;
-    private String rollno;
+    private String roll_number;
     private String room_number;
+    private String usertype;
+    private String token;
 
-    public NewUser(int id, String email, String username, String password, String password2, String contact_number, String rollno, String room_number, String usertype, String token) {
+
+    public NewUser(int id, String email, String username, String password, String password2, String contact_number, String roll_number, String room_number, String usertype, String token) {
         this.id = id;
         this.email = email;
         this.username = username;
         this.password = password;
         this.password2 = password2;
         this.contact_number = contact_number;
-        this.rollno = rollno;
+        this.roll_number = roll_number;
         this.room_number = room_number;
         this.usertype = usertype;
         this.token = token;
     }
 
-    private String usertype;
-    private String token;
 
 //    public NewUser(int id, String email, String username, String password, String password2, String contact_number, String rollno, String room_number, String usertype) {
 //        this.id = id;
@@ -94,12 +95,12 @@ public class NewUser {
         this.contact_number = contact_number;
     }
 
-    public String getRollno() {
-        return rollno;
+    public String getRoll_number() {
+        return roll_number;
     }
 
-    public void setRollno(String rollno) {
-        this.rollno = rollno;
+    public void setRoll_number(String roll_number) {
+        this.roll_number = roll_number;
     }
 
     public String getRoom_number() {

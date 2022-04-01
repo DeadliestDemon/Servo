@@ -3,33 +3,33 @@ package com.example.servo.Models;
 public class NewComplaint {
 
 
-    private long time;
-    private long date;
+    private String time;
+    private String date;
     private String type;
-    private String uid;
-    private String studentID;
-    private String workerID; // null
-    private long roomno;
-    private long rollno;
+    private int uid;
+    private int studentID;
+    private int workerID; // null
+    private String roomno;
+    private String rollno;
     private String Description;
     private String phoneStudent;
     private String phoneWorker;
     private long completedTime;
     private long completedDate;
 
-    public long getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(long time) {
+    public void setTime(String time) {
         this.time = time;
     }
 
-    public long getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(long date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -41,43 +41,43 @@ public class NewComplaint {
         this.type = type;
     }
 
-    public String getUid() {
+    public int getUid() {
         return uid;
     }
 
-    public void setUid(String uid) {
+    public void setUid(int uid) {
         this.uid = uid;
     }
 
-    public String getStudentID() {
+    public int getStudentID() {
         return studentID;
     }
 
-    public void setStudentID(String studentID) {
+    public void setStudentID(int studentID) {
         this.studentID = studentID;
     }
 
-    public String getWorkerID() {
+    public int getWorkerID() {
         return workerID;
     }
 
-    public void setWorkerID(String workerID) {
+    public void setWorkerID(int workerID) {
         this.workerID = workerID;
     }
 
-    public long getRoomno() {
+    public String getRoomno() {
         return roomno;
     }
 
-    public void setRoomno(long roomno) {
+    public void setRoomno(String roomno) {
         this.roomno = roomno;
     }
 
-    public long getRollno() {
+    public String getRollno() {
         return rollno;
     }
 
-    public void setRollno(long rollno) {
+    public void setRollno(String rollno) {
         this.rollno = rollno;
     }
 
@@ -135,7 +135,7 @@ public class NewComplaint {
 //        this.phoneWorker = phoneWorker;
 //    }
 
-    public NewComplaint(long time, long date, String type, String uid, String studentID, String workerID, long roomno, long rollno, String description, String phoneStudent, String phoneWorker, long completedTime, long completedDate) {
+    public NewComplaint(String time, String date, String type, int uid, int studentID, int workerID, String roomno, String rollno, String description, String phoneStudent, String phoneWorker, long completedTime, long completedDate) {
         this.time = time;
         this.date = date;
         this.type = type;

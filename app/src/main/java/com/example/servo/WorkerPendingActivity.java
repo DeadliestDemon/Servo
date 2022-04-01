@@ -60,11 +60,11 @@ public class WorkerPendingActivity extends AppCompatActivity {
 
         complaints = new ArrayList<NewComplaint>();
 
-        for (int i=0; i<6; i++)
-        {
-            NewComplaint currComp = new NewComplaint(time.get(i%3),date.get(i%3),"Electrician",uid.get(i%3),"asdf","sadfa",2534,515,"ak jdfnksd fiu","957425774","576541353",1800, 23102022);
-            complaints.add(currComp);
-        }
+//        for (int i=0; i<6; i++)
+//        {
+//            NewComplaint currComp = new NewComplaint(time.get(i%3),date.get(i%3),"Electrician",uid.get(i%3),"asdf","sadfa",2534,515,"ak jdfnksd fiu","957425774","576541353",1800, 23102022);
+//            complaints.add(currComp);
+//        }
 
         workerPendingRecycViewAdapter = new WorkerPendingRecycViewAdapter(WorkerPendingActivity.this, complaints);
         recyclerView.setAdapter(workerPendingRecycViewAdapter);
