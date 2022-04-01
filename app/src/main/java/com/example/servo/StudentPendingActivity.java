@@ -12,7 +12,7 @@ import com.example.servo.Models.NewComplaint;
 
 import java.util.ArrayList;
 
-public class PendingActivity extends AppCompatActivity {
+public class StudentPendingActivity extends AppCompatActivity {
 
     public static ArrayList<Integer> time = new ArrayList<>();
     public static ArrayList<Integer> date = new ArrayList<>();
@@ -58,7 +58,7 @@ public class PendingActivity extends AppCompatActivity {
             complaints.add(currComp);
         }
 
-        pendingRecyclerViewAdapter = new PendingRecyclerViewAdapter(PendingActivity.this, complaints);
+        pendingRecyclerViewAdapter = new PendingRecyclerViewAdapter(StudentPendingActivity.this, complaints);
         recyclerView.setAdapter(pendingRecyclerViewAdapter);
 
 

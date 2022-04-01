@@ -23,7 +23,7 @@
             android:name=".CompletedActivity"
             android:exported="false" />
         <activity
-            android:name=".PendingActivity"
+            android:name=".StudentPendingActivity"
             android:exported="false" />
         <activity
             android:name=".ComplaintActivity"

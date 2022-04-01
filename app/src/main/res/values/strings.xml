@@ -33,10 +33,14 @@
     <string name="phone">Mobile No.</string>
     <string name="register">Register</string>
     <string name="student">Student</string>
+    <string name="pending">Pending</string>
+    <string name="completed">Completed</string>
     <string name="employee">Employee</string>
     <string name="rollNo">Enter roll no</string>
     <string name="roomNo">Enter room no</string>
     <string name="addComplain">Add Complaint</string>
     <string name="addDes">Add Description</string>
+    <string name="complaintStart">Complaint started on :</string>
+    <string name="complaintEnd">Complaint ended on :</string>
 
 </resources>

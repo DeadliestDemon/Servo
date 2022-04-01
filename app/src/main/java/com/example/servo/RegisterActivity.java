@@ -70,16 +70,20 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
         });
         buttonStudent.setOnClickListener(view -> {
             isStudent = true;
-            buttonStudent.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#DAE9FA")));
+            buttonStudent.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#19224D")));
             buttonEmployee.setBackgroundTintList(ColorStateList.valueOf(Color.WHITE));
+            buttonStudent.setTextColor(Color.WHITE);
+            buttonEmployee.setTextColor(getColor(R.color.colorPrimary));
             spinner.setVisibility(View.INVISIBLE);
             RoomNo.setVisibility(View.VISIBLE);
             RollNo.setVisibility(View.VISIBLE);
         });
         buttonEmployee.setOnClickListener(view -> {
             isStudent = false;
-            buttonEmployee.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#DAE9FA")));
+            buttonEmployee.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#19224D")));
             buttonStudent.setBackgroundTintList(ColorStateList.valueOf(Color.WHITE));
+            buttonEmployee.setTextColor(Color.WHITE);
+            buttonStudent.setTextColor(getColor(R.color.colorPrimary));
             spinner.setVisibility(View.VISIBLE);
             RoomNo.setVisibility(View.INVISIBLE);
             RollNo.setVisibility(View.INVISIBLE);
