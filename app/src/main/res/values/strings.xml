@@ -35,6 +35,9 @@
     <string name="student">Student</string>
     <string name="pending">Pending</string>
     <string name="completed">Completed</string>
+    <string name="doc">Date of complaint : </string>
+    <string name="details">Details : </string>
+    <string name="time">Time : </string>
     <string name="employee">Employee</string>
     <string name="rollNo">Enter roll no</string>
     <string name="roomNo">Enter room no</string>
