@@ -19,6 +19,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.servo.Adapter.CompletedActivityAdapter;
@@ -53,6 +54,7 @@ public class StudentActivity extends AppCompatActivity implements StudentPending
     Button Completed;
     String Phone;
     public String Token;
+    ImageView logout;
 
     ArrayList<NewComplaint> newUser;
 
@@ -63,7 +65,7 @@ public class StudentActivity extends AppCompatActivity implements StudentPending
 
         Token = getIntent().getStringExtra("token");
 
-
+        logout = findViewById(R.id.menuButton);
         floatingActionButton = findViewById(R.id.fab);
         Pending = findViewById(R.id.pendingBtn);
         Completed = findViewById(R.id.completedBtn);
@@ -113,6 +115,46 @@ public class StudentActivity extends AppCompatActivity implements StudentPending
             }
         });
 
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+//                Log.e("chk","CHEK");
+                Call<Void> logoutCall = RetrofitClient
+                        .getInstance()
+                        .getApi().logOut(Token);
+
+                logoutCall.enqueue(new Callback<Void>() {
+                    @Override
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+                        if (response.code() == 200)
+                        {
+//                            Toast.makeText(StudentActivity.this, "log outed", Toast.LENGTH_SHORT).show();
+                            Log.e("logout==========>", "success");
+                            startActivity(new Intent(StudentActivity.this, MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
+
+                        }
+                        else {
+                            String s = response.errorBody().toString();
+                            Log.e("logout==========>", response.errorBody().toString());
+
+//                            Toast.makeText(StudentActivity.this, s, Toast.LENGTH_SHORT).show();
+
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+                        Log.e("logout==========>", t.toString());
+
+
+                    }
+                });
+
+//                startActivity();
+            }
+        });
+
 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("NotifyDataSetChanged")
@@ -134,12 +176,7 @@ public class StudentActivity extends AppCompatActivity implements StudentPending
     }
 
 
-    public void onCheckboxClicked(View view) {
 
-
-
-
-    }
 
     private void createCompletedListData() {
 

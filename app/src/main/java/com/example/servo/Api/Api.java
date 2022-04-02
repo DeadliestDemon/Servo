@@ -67,6 +67,10 @@ public interface Api {
             @Field("mark_done") Boolean mark_done
     );
 
+    @GET("logout")
+    Call<Void> logOut(
+            @Header("Authorization") String token
+    );
 
     @GET("authdetail/{username}")
     Call<NewStudentUser> getUserDetails(
