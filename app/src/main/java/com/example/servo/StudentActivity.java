@@ -2,13 +2,16 @@ package com.example.servo;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
@@ -24,6 +27,7 @@ import com.example.servo.Api.NewComplaint;
 import com.example.servo.Api.NewWorkerUser;
 import com.example.servo.Api.RetrofitClient;
 import com.example.servo.Models.NewUser;
+import com.example.servo.databinding.PendingStudentCardLayoutBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
@@ -33,7 +37,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class StudentActivity extends AppCompatActivity{
+
+
+public class StudentActivity extends AppCompatActivity implements StudentPendingActivityAdapter.OnPatchListener {
 
     private BottomNavigationView bottomNavigationView;
     RecyclerView studentPendingActivityRecyclerView;
@@ -45,8 +51,8 @@ public class StudentActivity extends AppCompatActivity{
     FloatingActionButton floatingActionButton;
     Button Pending;
     Button Completed;
-    String Token;
     String Phone;
+    public String Token;
 
     ArrayList<NewComplaint> newUser;
 
@@ -54,6 +60,9 @@ public class StudentActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student);
+
+        Token = getIntent().getStringExtra("token");
+
 
         floatingActionButton = findViewById(R.id.fab);
         Pending = findViewById(R.id.pendingBtn);
@@ -63,7 +72,7 @@ public class StudentActivity extends AppCompatActivity{
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         studentPendingActivityRecyclerView.setLayoutManager(linearLayoutManager);
         studentPendingInfos = new ArrayList<StudentPendingInfo>();
-        studentPendingActivityAdapter = new StudentPendingActivityAdapter(this, studentPendingInfos);
+        studentPendingActivityAdapter = new StudentPendingActivityAdapter(StudentActivity.this, studentPendingInfos);
         studentPendingActivityRecyclerView.setAdapter(studentPendingActivityAdapter);
         LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         completedActivityRecyclerView.setLayoutManager(linearLayoutManager1);
@@ -71,11 +80,12 @@ public class StudentActivity extends AppCompatActivity{
         completedActivityAdapter = new CompletedActivityAdapter(this, completedActivityInfos);
         completedActivityRecyclerView.setAdapter(completedActivityAdapter);
 
-        Token = getIntent().getStringExtra("token");
         Phone = getIntent().getStringExtra("phone");
 
         SharedPreferences sharedPreferences = this.getSharedPreferences("com.example.servo", Context.MODE_PRIVATE);
         completedActivityAdapter.notifyDataSetChanged();
+
+
 
         createCompletedListData();
         createStudentPendingListData();
@@ -122,33 +132,13 @@ public class StudentActivity extends AppCompatActivity{
 
         });
     }
+
+
     public void onCheckboxClicked(View view) {
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-        // Setting Alert Dialog Title
-        alertDialogBuilder.setTitle("Confirm Exit..!!!");
-        // Icon Of Alert Dialog
-        alertDialogBuilder.setIcon(R.drawable.ic_deplete_complaint_alert);
-        // Setting Alert Dialog Message
-        alertDialogBuilder.setMessage("Are you sure,You want to delete this complaint?");
-        alertDialogBuilder.setCancelable(false);
 
-        alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 
-            @Override
-            public void onClick(DialogInterface arg0, int arg1) {
-                finish();
-            }
-        });
 
-        alertDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(StudentActivity.this,"You clicked over No",Toast.LENGTH_SHORT).show();
-            }
-        });
 
-        AlertDialog alertDialog = alertDialogBuilder.create();
-        alertDialog.show();
     }
 
     private void createCompletedListData() {
@@ -289,4 +279,53 @@ public class StudentActivity extends AppCompatActivity{
 //        studentPendingInfos.add(studentPendingInfo);
 //        studentPendingInfos.add(studentPendingInfo1);
     }
+
+
+    @Override
+    public void onPatchListener(Intent intent) {
+
+        String ID = String.valueOf(intent.getStringExtra("compId") );
+        Log.e("Data =================>",intent.getStringExtra("compId"));
+        int copId = Integer.parseInt(ID);
+        Log.e("Data =================>", String.valueOf(copId));
+        //chk
+
+        Call<NewComplaint> call = RetrofitClient
+                .getInstance()
+                .getApi()
+                .markDone(Token, copId, true);
+
+        call.enqueue(new Callback<NewComplaint>() {
+            @Override
+            public void onResponse(Call<NewComplaint> call, Response<NewComplaint> response) {
+                if (response.code() == 200)
+                {
+                    Toast.makeText(StudentActivity.this, "Complaint completed", Toast.LENGTH_SHORT).show();
+
+                }
+                else
+                {
+                    String s = response.errorBody().toString();
+                    Toast.makeText(StudentActivity.this, s, Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<NewComplaint> call, Throwable t) {
+
+            }
+        });
+
+        //endchk
+        studentPendingActivityAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onBackPressed(){
+        Intent a = new Intent(Intent.ACTION_MAIN);
+        a.addCategory(Intent.CATEGORY_HOME);
+        a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(a);
+    }
+
 }
