@@ -46,5 +46,6 @@
     <string name="addDes">Add Description</string>
     <string name="complaintStart">Complaint started on :</string>
     <string name="complaintEnd">Complaint ended on :</string>
+    <string name="addNewComplain">Add a new complaint </string>
 
 </resources>

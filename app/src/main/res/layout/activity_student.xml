@@ -11,15 +11,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_margin="16dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="@color/colorPrimary"
         android:baselineAlignBottom="false"
         android:contentDescription="@string/app_name"
         android:src="@drawable/ic_add"
-        android:translationY="-50dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -96,6 +96,24 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="32.5dp"
+        android:background="@drawable/custom_border2"
+        android:gravity="center_vertical"
+        android:paddingStart="40dp"
+        android:paddingEnd="30dp"
+        android:text="@string/addNewComplain"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
