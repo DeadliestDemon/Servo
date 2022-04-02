@@ -3,16 +3,31 @@ package com.example.servo;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
 import com.example.servo.Adapter.CompletedActivityAdapter;
 import com.example.servo.Adapter.StudentPendingActivityAdapter;
+import com.example.servo.Api.NewComplaint;
+import com.example.servo.Api.NewWorkerUser;
+import com.example.servo.Api.RetrofitClient;
+import com.example.servo.Models.NewUser;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
+import java.util.Date;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class StudentActivity extends AppCompatActivity{
 
@@ -26,8 +41,9 @@ public class StudentActivity extends AppCompatActivity{
     FloatingActionButton floatingActionButton;
     Button Pending;
     Button Completed;
+    String Token;
 
-
+    ArrayList<NewComplaint> newUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +65,11 @@ public class StudentActivity extends AppCompatActivity{
         completedActivityInfos = new ArrayList<CompletedActivityInfo>();
         completedActivityAdapter = new CompletedActivityAdapter(this, completedActivityInfos);
         completedActivityRecyclerView.setAdapter(completedActivityAdapter);
+
+        Token = getIntent().getStringExtra("token");
+
+        SharedPreferences sharedPreferences = this.getSharedPreferences("com.example.servo", Context.MODE_PRIVATE);
+        completedActivityAdapter.notifyDataSetChanged();
 
         createCompletedListData();
         createStudentPendingListData();
@@ -80,22 +101,156 @@ public class StudentActivity extends AppCompatActivity{
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(StudentActivity.this, ComplaintActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
+//                startActivity(new Intent(StudentActivity.this, ComplaintActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
+                Intent intent = new Intent(StudentActivity.this, ComplaintActivity.class);
+                intent.putExtra("token",Token);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                completedActivityAdapter.notifyDataSetChanged();
+
+
+
             }
+
         });
     }
 
     private void createCompletedListData() {
-        CompletedActivityInfo completedActivityInfo = new CompletedActivityInfo("4827890", "casfdwadf", "1/4/2022", "5:10 PM", "1/4/2022", "5:10 PM");
-        CompletedActivityInfo completedActivityInfo1 = new CompletedActivityInfo("4827890", "casfdwadf", "1/4/2022", "5:10 PM", "1/4/2022", "5:10 PM");
-        completedActivityInfos.add(completedActivityInfo);
-        completedActivityInfos.add(completedActivityInfo1);
+
+        Call<ArrayList<NewComplaint>> callDone = RetrofitClient
+                .getInstance()
+                .getApi()
+                .getDone(Token);
+
+        callDone.enqueue(new Callback<ArrayList<NewComplaint>>() {
+            @Override
+            public void onResponse(Call<ArrayList<NewComplaint>> call, Response<ArrayList<NewComplaint>> response) {
+                if(response.code() == 200)
+                {
+
+                    newUser = response.body();
+//                    if (newUser != null)
+//                    {
+//                        Log.i("size: ", Integer.toString(newUser.size()));
+//
+//                    }
+//                    Toast.makeText(StudentActivity.this, newUser.size(), Toast.LENGTH_SHORT).show();
+
+//                    int id = newUser.getId();
+//                    token = newUser.getToken();
+
+                    if (newUser != null)
+                    {
+                        for (int i=0; i< newUser.size(); i++)
+                        {
+                            int id = newUser.get(i).getId();
+                            String type = newUser.get(i).getType();
+                            String DateLog = newUser.get(i).getDate_lodged();
+                            String date = DateLog.substring(0,10);
+                            String time = DateLog.substring(11,16);
+                            CompletedActivityInfo completedActivityInfo = new CompletedActivityInfo(Integer.toString(id), type, date, time, "1/4/2022", "5:10 PM");
+                            completedActivityInfos.add(completedActivityInfo);
+
+
+
+                        }
+                    }
+
+
+                    completedActivityAdapter.notifyDataSetChanged();
+
+
+                }
+                else
+                {
+                    String s = response.errorBody().toString();
+                    Toast.makeText(StudentActivity.this, s, Toast.LENGTH_LONG).show();
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<NewComplaint>> call, Throwable t) {
+
+            }
+        });
+
+        if (newUser != null)
+        {
+
+        }
+
+
+
+//        CompletedActivityInfo completedActivityInfo = new CompletedActivityInfo("4827890", "casfdwadf", "1/4/2022", "5:10 PM", "1/4/2022", "5:10 PM");
+//        CompletedActivityInfo completedActivityInfo1 = new CompletedActivityInfo("4827890", "casfdwadf", "1/4/2022", "5:10 PM", "1/4/2022", "5:10 PM");
+//        completedActivityInfos.add(completedActivityInfo);
+//        completedActivityInfos.add(completedActivityInfo1);
     }
 
     private void createStudentPendingListData() {
-        StudentPendingInfo studentPendingInfo = new StudentPendingInfo("1234", "ELECTRICIAN", "1/4/2022", "5:10 PM");
-        StudentPendingInfo studentPendingInfo1 = new StudentPendingInfo("1234", "ELECTRICIAN", "1/4/2022", "5:10 PM");
-        studentPendingInfos.add(studentPendingInfo);
-        studentPendingInfos.add(studentPendingInfo1);
+
+        Call<ArrayList<NewComplaint>> callPending = RetrofitClient
+                .getInstance()
+                .getApi()
+                .getPending(Token);
+
+        callPending.enqueue(new Callback<ArrayList<NewComplaint>>() {
+            @Override
+            public void onResponse(Call<ArrayList<NewComplaint>> call, Response<ArrayList<NewComplaint>> response) {
+                if(response.code() == 200)
+                {
+
+                    newUser = response.body();
+//                    if(newUser != null){
+//                        Log.i("size: ", Integer.toString(newUser.size()));
+//
+//                    }
+//                    Toast.makeText(StudentActivity.this, newUser.size(), Toast.LENGTH_SHORT).show();
+
+//                    int id = newUser.getId(); asdf@1234
+//                    token = newUser.getToken(); student1
+
+                    if (newUser != null)
+                    {
+                        for (int i=0; i< newUser.size(); i++)
+                        {
+                            int id = newUser.get(i).getId();
+                            String type = newUser.get(i).getType();
+                            String DateLog = newUser.get(i).getDate_lodged();
+                            String date = DateLog.substring(0,10);
+                            String time = DateLog.substring(11,16);
+                            StudentPendingInfo studentPendingInfo = new StudentPendingInfo(Integer.toString(id), type, date, time);
+                            studentPendingInfos.add(studentPendingInfo);
+
+
+
+                        }
+                    }
+
+
+                    studentPendingActivityAdapter.notifyDataSetChanged();
+
+                }
+                else
+                {
+                    String s = response.errorBody().toString();
+                    Toast.makeText(StudentActivity.this, s, Toast.LENGTH_LONG).show();
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<NewComplaint>> call, Throwable t) {
+
+            }
+        });
+
+
+
+
+//        StudentPendingInfo studentPendingInfo1 = new StudentPendingInfo("1234", "ELECTRICIAN", "1/4/2022", "5:10 PM");
+//        studentPendingInfos.add(studentPendingInfo);
+//        studentPendingInfos.add(studentPendingInfo1);
     }
 }

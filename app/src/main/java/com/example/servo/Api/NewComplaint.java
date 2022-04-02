@@ -9,7 +9,7 @@ public class NewComplaint {
     private String roll_number;
     private String room_number;
     private int student;
-    private int worker;
+    private int worker = 3;
 
     public NewComplaint(int id, String type, String description, String date_lodged, Boolean mark_done, String roll_number, String room_number, int student, int worker) {
         this.id = id;

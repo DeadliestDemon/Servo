@@ -3,7 +3,9 @@ package com.example.servo;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
@@ -17,6 +19,9 @@ import com.example.servo.Api.NewStudentUser;
 import com.example.servo.Api.NewWorkerUser;
 import com.example.servo.Api.RetrofitClient;
 import com.example.servo.Models.NewUser;
+
+import java.io.IOException;
+import java.io.Serializable;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -35,6 +40,7 @@ public class LoginActivity extends AppCompatActivity {
     NewStudentUser currUser;
     NewUser loggedUser;
     String type;
+    String tmp2;
 
 
     @Override
@@ -48,6 +54,8 @@ public class LoginActivity extends AppCompatActivity {
         loginButton = findViewById(R.id.loginBtn);
 
         notuser = findViewById(R.id.notAuser);
+
+        SharedPreferences sharedPreferences = this.getSharedPreferences("com.example.servo", Context.MODE_PRIVATE);
 
         notuser.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("ResourceAsColor")
@@ -88,7 +96,81 @@ public class LoginActivity extends AppCompatActivity {
 
                                 token = loginResponse.getToken();
 //                                Toast.makeText(LoginActivity.this, "User logged in successfully "+token, Toast.LENGTH_SHORT).show();
+                                //chk2
+                                // synchronise
+//                    if(token != null) {
+                                tmp2 = "Token " + token;
 
+                                Call<NewStudentUser> call2 = RetrofitClient
+                                        .getInstance()
+                                        .getApi()
+                                        .getUserDetails(tmp2, user);
+
+                                call2.enqueue(new Callback<NewStudentUser>() {
+                                    @Override
+                                    public void onResponse(Call<NewStudentUser> call, Response<NewStudentUser> response) {
+//                                        currUser = response.body();
+////                                        loggedUser = new NewUser(currUser.getId(),currUser.getEmail(), currUser.getUsername(), pass,pass, currUser.getContact_number(), currUser.getRoll_number(), currUser.getRoom_number(), currUser.getUsertype(), currUser.getToken());
+////                                    type = currUser.getUsertype();
+//                            Toast.makeText(LoginActivity.this, currUser.getUsertype(), Toast.LENGTH_SHORT).show();
+
+                                        if (response.code() == 200) {
+                                            currUser = response.body();
+                                            loggedUser = new NewUser(currUser.getId(), currUser.getEmail(), currUser.getUsername(), pass, pass, currUser.getContact_number(), currUser.getRoll_number(), currUser.getRoom_number(), currUser.getUsertype(), currUser.getToken());
+                                            type = currUser.getUsertype();
+                                            sharedPreferences.edit().putString("currID", String.valueOf(currUser.getId())).apply();
+                                            sharedPreferences.edit().putString("currEmail", currUser.getEmail()).apply();
+                                            sharedPreferences.edit().putString("currUser", currUser.getUsername()).apply();
+                                            sharedPreferences.edit().putString("currContact",currUser.getContact_number()).apply();
+                                            sharedPreferences.edit().putString("currRoll", currUser.getRoll_number()).apply();
+                                            sharedPreferences.edit().putString("currRoom", currUser.getRoom_number()).apply();
+                                            sharedPreferences.edit().putString("currType", currUser.getUsertype()).apply();
+                                            sharedPreferences.edit().putString("currToken", currUser.getToken()).apply();
+
+
+//                                    Toast.makeText(LoginActivity.this, "Logged in Successfully " + type, Toast.LENGTH_SHORT).show();
+
+                                        } else {
+                                            String s = response.errorBody().toString();
+                                            Toast.makeText(LoginActivity.this, s, Toast.LENGTH_SHORT).show();
+
+                                        }
+
+                                        if (type != null && type.equals("STUDENT"))
+                                        {
+                                            Intent intent = new Intent(LoginActivity.this, StudentActivity.class);
+                                            intent.putExtra("token",tmp2);
+//                        Toast.makeText(LoginActivity.this, tmp2, Toast.LENGTH_LONG).show();
+
+//                        token = null;
+                                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                            startActivity(intent);
+                                        }
+                                        else if(type != null && (type.equals("PLUMBER") || type.equals("CARPENTER") || type.equals("ELECTRICIAN") || type.equals("CLEANER") || type.equals("OTHERS") ))
+                                        {
+                                            Intent intent = new Intent(LoginActivity.this, WorkerActivity.class);
+                                            intent.putExtra("token",tmp2);
+//                        token = null;
+
+                                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                            startActivity(intent);
+                                        }
+                                        else
+                                        {
+                                            Toast.makeText(LoginActivity.this, "Error", Toast.LENGTH_SHORT).show();
+                                        }
+
+
+
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<NewStudentUser> call, Throwable t) {
+
+                                    }
+                                });
+
+                                //endchk2
 
 
 
@@ -120,73 +202,50 @@ public class LoginActivity extends AppCompatActivity {
 
 
                     // if is successful
-                    String tmp2 = "Token " + token;
 //                    String tmp2 = "Token 701db904612321df94ef4554dadff06ae3ecc485";
 //                    Toast.makeText(LoginActivity.this, tmp2, Toast.LENGTH_LONG).show();
 
-                    //chk2
-                    // synchronise
-//                    if(token != null) {
-                        Call<NewStudentUser> call2 = RetrofitClient
-                                .getInstance()
-                                .getApi()
-                                .getUserDetails(tmp2, user);
+//                    //chk2
+//                    // synchronise
+////                    if(token != null) {
+//                        Call<NewStudentUser> call2 = RetrofitClient
+//                                .getInstance()
+//                                .getApi()
+//                                .getUserDetails(tmp2, user);
+//
+//                        call2.enqueue(new Callback<NewStudentUser>() {
+//                            @Override
+//                            public void onResponse(Call<NewStudentUser> call, Response<NewStudentUser> response) {
+////                                        currUser = response.body();
+//////                                        loggedUser = new NewUser(currUser.getId(),currUser.getEmail(), currUser.getUsername(), pass,pass, currUser.getContact_number(), currUser.getRoll_number(), currUser.getRoom_number(), currUser.getUsertype(), currUser.getToken());
+//////                                    type = currUser.getUsertype();
+////                            Toast.makeText(LoginActivity.this, currUser.getUsertype(), Toast.LENGTH_SHORT).show();
+//
+//                                if (response.code() == 200) {
+//                                    currUser = response.body();
+//                                    loggedUser = new NewUser(currUser.getId(), currUser.getEmail(), currUser.getUsername(), pass, pass, currUser.getContact_number(), currUser.getRoll_number(), currUser.getRoom_number(), currUser.getUsertype(), currUser.getToken());
+//                                    type = currUser.getUsertype();
+////                                    Toast.makeText(LoginActivity.this, "Logged in Successfully " + type, Toast.LENGTH_SHORT).show();
+//
+//                                } else {
+//                                    String s = response.errorBody().toString();
+//                                    Toast.makeText(LoginActivity.this, s, Toast.LENGTH_SHORT).show();
+//
+//                                }
+//
+//
+//                            }
+//
+//                            @Override
+//                            public void onFailure(Call<NewStudentUser> call, Throwable t) {
+//
+//                            }
+//                        });
+//
+//                        //endchk2
 
-                        call2.enqueue(new Callback<NewStudentUser>() {
-                            @Override
-                            public void onResponse(Call<NewStudentUser> call, Response<NewStudentUser> response) {
-//                                        currUser = response.body();
-////                                        loggedUser = new NewUser(currUser.getId(),currUser.getEmail(), currUser.getUsername(), pass,pass, currUser.getContact_number(), currUser.getRoll_number(), currUser.getRoom_number(), currUser.getUsertype(), currUser.getToken());
-////                                    type = currUser.getUsertype();
-//                            Toast.makeText(LoginActivity.this, currUser.getUsertype(), Toast.LENGTH_SHORT).show();
-
-                                if (response.code() == 200) {
-                                    currUser = response.body();
-                                    loggedUser = new NewUser(currUser.getId(), currUser.getEmail(), currUser.getUsername(), pass, pass, currUser.getContact_number(), currUser.getRoll_number(), currUser.getRoom_number(), currUser.getUsertype(), currUser.getToken());
-                                    type = currUser.getUsertype();
-//                                    Toast.makeText(LoginActivity.this, "Logged in Successfully " + type, Toast.LENGTH_SHORT).show();
-
-                                } else {
-                                    String s = response.errorBody().toString();
-                                    Toast.makeText(LoginActivity.this, s, Toast.LENGTH_SHORT).show();
-
-                                }
 
 
-                            }
-
-                            @Override
-                            public void onFailure(Call<NewStudentUser> call, Throwable t) {
-
-                            }
-                        });
-
-                        //endchk2
-
-
-                    if (type != null && type.equals("STUDENT"))
-                    {
-                        Intent intent = new Intent(LoginActivity.this, StudentActivity.class);
-                        intent.putExtra("token",tmp2);
-//                        Toast.makeText(LoginActivity.this, tmp2, Toast.LENGTH_LONG).show();
-
-//                        token = null;
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(intent);
-                    }
-                    else if(type != null && (type.equals("PLUMBER") || type.equals("CARPENTER") || type.equals("ELECTRICIAN") || type.equals("CLEANER") || type.equals("OTHERS") ))
-                    {
-                        Intent intent = new Intent(LoginActivity.this, WorkerActivity.class);
-                        intent.putExtra("token",tmp2);
-//                        token = null;
-
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(intent);
-                    }
-                    else
-                    {
-                        Toast.makeText(LoginActivity.this, "Error", Toast.LENGTH_SHORT).show();
-                    }
 
                     }
 

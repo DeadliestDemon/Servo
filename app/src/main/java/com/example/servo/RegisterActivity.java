@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.servo.Api.NewStudentUser;
+import com.example.servo.Api.NewWorkerUser;
 import com.example.servo.Api.RetrofitClient;
 import com.example.servo.Models.NewUser;
 import org.json.JSONObject;
@@ -185,7 +186,8 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 
             // if is successful
             Intent intent = new Intent(RegisterActivity.this, StudentActivity.class);
-            intent.putExtra("token",token);
+            String tmp2 = "Token " + token;
+            intent.putExtra("token", tmp2);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         }
@@ -196,6 +198,7 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
         String mail = Email.getText().toString();
         String pass = Password.getText().toString();
         String phone = PhoneNo.getText().toString();
+        String type = profession.toUpperCase();
 
         // add worker
         if(user.isEmpty()) {
@@ -209,8 +212,48 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
         } else if (profession.isEmpty()) {
             Toast.makeText(RegisterActivity.this, "Please fill profession", Toast.LENGTH_SHORT).show();
         } else {
+
+            //chk
+            Call<NewWorkerUser> call = RetrofitClient
+                    .getInstance()
+                    .getApi()
+                    .createWorker(user,mail,pass,pass,phone,type);
+
+            call.enqueue(new Callback<NewWorkerUser>() {
+                @Override
+                public void onResponse(Call<NewWorkerUser> call, Response<NewWorkerUser> response) {
+                    if(response.code() == 201)
+                    {
+
+                        NewWorkerUser newUser = response.body();
+                        int id = newUser.getId();
+                        token = newUser.getToken();
+                        currUser = new NewUser(id,mail,user,pass,pass,phone,"","",type,token);
+                        Toast.makeText(RegisterActivity.this, "User created successfully", Toast.LENGTH_SHORT).show();
+
+                    }
+                    else
+                    {
+                        String s = response.errorBody().toString();
+                        Toast.makeText(RegisterActivity.this, s, Toast.LENGTH_SHORT).show();
+
+                    }
+
+                }
+
+                @Override
+                public void onFailure(Call<NewWorkerUser> call, Throwable t) {
+
+                }
+            });
+
+
+            //endchk
+
             // if it successful
             Intent intent = new Intent(RegisterActivity.this, WorkerActivity.class);
+            String tmp2 = "Token " + token;
+            intent.putExtra("token", tmp2);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         }

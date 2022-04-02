@@ -46,6 +46,17 @@ public interface Api {
             @Field("password") String password
     );
 
+    @FormUrlEncoded
+    @POST("complaint/new")
+    Call<NewComplaint> newComp(
+            @Header("Authorization") String token,
+            @Field("type") String type,
+            @Field("description") String description,
+            @Field("roll_number") String roll_number,
+            @Field("room_number") String room_number
+
+    );
+
 
     @GET("authdetail/{username}")
     Call<NewStudentUser> getUserDetails(
@@ -54,7 +65,7 @@ public interface Api {
     );
 
     @GET("complaint/pending")
-    Call<NewCompArr> getPending(
+    Call<ArrayList<NewComplaint>> getPending(
             @Header("Authorization") String token
     );
 
@@ -62,6 +73,8 @@ public interface Api {
     Call<ArrayList<NewComplaint>> getDone(
             @Header("Authorization") String token
     );
+
+
 
 
 

@@ -7,7 +7,7 @@
     tools:context=".ComplaintActivity">
 
     <EditText
-        android:id="@+id/textView4"
+        android:id="@+id/roomEdit"
         android:layout_width="250dp"
         android:layout_height="40dp"
         android:background="@drawable/custom_edit_text_view"
@@ -30,7 +30,7 @@
         app:layout_constraintVertical_bias="0.118" />
 
     <EditText
-        android:id="@+id/editView5"
+        android:id="@+id/rollEdit"
         android:layout_width="250dp"
         android:layout_height="40dp"
         android:background="@drawable/custom_edit_text_view"
@@ -49,7 +49,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/roomEdit"
         app:layout_constraintVertical_bias="0.066" />
 
     <Spinner
@@ -71,7 +71,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editView5"
+        app:layout_constraintTop_toBottomOf="@+id/rollEdit"
         app:layout_constraintVertical_bias="0.079" />
 
     <EditText
