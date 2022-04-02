@@ -49,5 +49,6 @@
     <string name="complaintEnd">Complaint ended on :</string>
     <string name="addNewComplain">Add a new complaint </string>
     <string name="menu">menu</string>
+    <string name="logo">logo</string>
 
 </resources>
