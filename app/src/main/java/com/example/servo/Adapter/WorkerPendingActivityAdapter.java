@@ -68,8 +68,8 @@ public class WorkerPendingActivityAdapter extends RecyclerView.Adapter<WorkerPen
             txtWRoom.setText("ROOM NO : " + workerPendingInfo.getRoomNO());
             txtWRoll.setText("ROLL NO : " + workerPendingInfo.getRollNO());
             txtWContact.setText("CONTACT NO : " + workerPendingInfo.getContactNo());
-            txtWDate.setText(workerPendingInfo.getDate());
-            txtWTime.setText(workerPendingInfo.getTime());
+            txtWDate.setText("DATE : " + workerPendingInfo.getDate());
+            txtWTime.setText("TIME : " + workerPendingInfo.getTime());
         }
     }
 }
