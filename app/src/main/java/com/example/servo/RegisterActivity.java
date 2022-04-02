@@ -185,7 +185,7 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
             //endchk
 
             // if is successful
-            Intent intent = new Intent(RegisterActivity.this, StudentActivity.class);
+            Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
             String tmp2 = "Token " + token;
             intent.putExtra("token", tmp2);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -251,7 +251,7 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
             //endchk
 
             // if it successful
-            Intent intent = new Intent(RegisterActivity.this, WorkerActivity.class);
+            Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
             String tmp2 = "Token " + token;
             intent.putExtra("token", tmp2);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);

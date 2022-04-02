@@ -41,6 +41,7 @@ public class LoginActivity extends AppCompatActivity {
     NewUser loggedUser;
     String type;
     String tmp2;
+    String phone;
 
 
     @Override
@@ -126,7 +127,7 @@ public class LoginActivity extends AppCompatActivity {
                                             sharedPreferences.edit().putString("currRoom", currUser.getRoom_number()).apply();
                                             sharedPreferences.edit().putString("currType", currUser.getUsertype()).apply();
                                             sharedPreferences.edit().putString("currToken", currUser.getToken()).apply();
-
+                                            phone = currUser.getContact_number();
 
 //                                    Toast.makeText(LoginActivity.this, "Logged in Successfully " + type, Toast.LENGTH_SHORT).show();
 
@@ -140,6 +141,7 @@ public class LoginActivity extends AppCompatActivity {
                                         {
                                             Intent intent = new Intent(LoginActivity.this, StudentActivity.class);
                                             intent.putExtra("token",tmp2);
+                                            intent.putExtra("phone",phone);
 //                        Toast.makeText(LoginActivity.this, tmp2, Toast.LENGTH_LONG).show();
 
 //                        token = null;

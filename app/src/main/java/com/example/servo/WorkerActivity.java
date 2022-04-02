@@ -4,16 +4,25 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.servo.Adapter.CompletedActivityAdapter;
 import com.example.servo.Adapter.StudentPendingActivityAdapter;
 import com.example.servo.Adapter.WorkerPendingActivityAdapter;
+import com.example.servo.Api.NewComplaint;
+import com.example.servo.Api.RetrofitClient;
 
 import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class WorkerActivity extends AppCompatActivity {
 
@@ -25,6 +34,9 @@ public class WorkerActivity extends AppCompatActivity {
     private ArrayList<WorkerPendingInfo> workerPendingInfos;
     Button pendingWorker;
     Button completedWorker;
+    String Token;
+    ArrayList<NewComplaint> newUser;
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +57,11 @@ public class WorkerActivity extends AppCompatActivity {
         completedActivityInfos = new ArrayList<CompletedActivityInfo>();
         completedActivityAdapter = new CompletedActivityAdapter(this, completedActivityInfos);
         completedActivityRecyclerView.setAdapter(completedActivityAdapter);
+
+        Token = getIntent().getStringExtra("token");
+       sharedPreferences= this.getSharedPreferences("com.example.servo", Context.MODE_PRIVATE);
+
+
 
         createCompletedListData();
         createStudentPendingListData();
@@ -77,16 +94,142 @@ public class WorkerActivity extends AppCompatActivity {
     }
 
     private void createCompletedListData() {
-        CompletedActivityInfo completedActivityInfo = new CompletedActivityInfo("4827890", "casfdwadf", "1/4/2022", "5:10 PM", "1/4/2022", "5:10 PM");
-        CompletedActivityInfo completedActivityInfo1 = new CompletedActivityInfo("4827890", "casfdwadf", "1/4/2022", "5:10 PM", "1/4/2022", "5:10 PM");
-        completedActivityInfos.add(completedActivityInfo);
-        completedActivityInfos.add(completedActivityInfo1);
+
+        Call<ArrayList<NewComplaint>> callDone = RetrofitClient
+                .getInstance()
+                .getApi()
+                .getDone(Token);
+
+        callDone.enqueue(new Callback<ArrayList<NewComplaint>>() {
+            @Override
+            public void onResponse(Call<ArrayList<NewComplaint>> call, Response<ArrayList<NewComplaint>> response) {
+                if(response.code() == 200)
+                {
+
+                    newUser = response.body();
+//                    if (newUser != null)
+//                    {
+//                        Log.i("size: ", Integer.toString(newUser.size()));
+//
+//                    }
+//                    Toast.makeText(StudentActivity.this, newUser.size(), Toast.LENGTH_SHORT).show();
+
+//                    int id = newUser.getId();
+//                    token = newUser.getToken();
+
+                    if (newUser != null)
+                    {
+                        for (int i=0; i< newUser.size(); i++)
+                        {
+                            int id = newUser.get(i).getId();
+                            String type = newUser.get(i).getType();
+                            String DateLog = newUser.get(i).getDate_lodged();
+                            String date = DateLog.substring(0,10);
+                            String time = DateLog.substring(11,16);
+                            CompletedActivityInfo completedActivityInfo = new CompletedActivityInfo(Integer.toString(id), type, date, time, "1/4/2022", "5:10 PM");
+                            completedActivityInfos.add(completedActivityInfo);
+
+
+
+                        }
+                    }
+
+
+                    completedActivityAdapter.notifyDataSetChanged();
+
+
+                }
+                else
+                {
+                    String s = response.errorBody().toString();
+                    Toast.makeText(WorkerActivity.this, s, Toast.LENGTH_LONG).show();
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<NewComplaint>> call, Throwable t) {
+
+            }
+        });
+
+        if (newUser != null)
+        {
+
+        }
+
+//        CompletedActivityInfo completedActivityInfo = new CompletedActivityInfo("4827890", "casfdwadf", "1/4/2022", "5:10 PM", "1/4/2022", "5:10 PM");
+//        CompletedActivityInfo completedActivityInfo1 = new CompletedActivityInfo("4827890", "casfdwadf", "1/4/2022", "5:10 PM", "1/4/2022", "5:10 PM");
+//        completedActivityInfos.add(completedActivityInfo);
+//        completedActivityInfos.add(completedActivityInfo1);
     }
 
     private void createStudentPendingListData() {
-        WorkerPendingInfo workerPendingInfo = new WorkerPendingInfo("1234", "ELECTRICIAN", "1/4/2022", "5:10 PM", "5607", "IEC2020080", "9761319703");
-        WorkerPendingInfo workerPendingInfo1 = new WorkerPendingInfo("1234", "ELECTRICIAN", "1/4/2022", "5:10 PM", "5607", "IEC2020080", "9761319703");
-        workerPendingInfos.add(workerPendingInfo);
-        workerPendingInfos.add(workerPendingInfo1);
+
+        Call<ArrayList<NewComplaint>> callPending = RetrofitClient
+                .getInstance()
+                .getApi()
+                .getPending(Token);
+
+        callPending.enqueue(new Callback<ArrayList<NewComplaint>>() {
+            @Override
+            public void onResponse(Call<ArrayList<NewComplaint>> call, Response<ArrayList<NewComplaint>> response) {
+                if(response.code() == 200)
+                {
+
+                    newUser = response.body();
+//                    if(newUser != null){
+//                        Log.i("size: ", Integer.toString(newUser.size()));
+//
+//                    }
+//                    Toast.makeText(StudentActivity.this, newUser.size(), Toast.LENGTH_SHORT).show();
+
+//                    int id = newUser.getId(); asdf@1234
+//                    token = newUser.getToken(); student1
+
+                    if (newUser != null)
+                    {
+                        for (int i=0; i< newUser.size(); i++)
+                        {
+                            int id = newUser.get(i).getId();
+                            String type = newUser.get(i).getType();
+                            String DateLog = newUser.get(i).getDate_lodged();
+                            String date = DateLog.substring(0,10);
+                            String time = DateLog.substring(11,16);
+
+
+//                                    places = (ArrayList<String>) ObjectSerializer.deserialize(sharedPreferences.getString("places", ObjectSerializer.serialize(new ArrayList<String>())));
+
+                            WorkerPendingInfo workerPendingInfo = new WorkerPendingInfo(Integer.toString(id),type,date,time,newUser.get(i).getRoom_number(),newUser.get(i).getRoll_number(), newUser.get(i).getContact_number());
+                            workerPendingInfos.add(workerPendingInfo);
+
+
+
+                        }
+                    }
+
+
+                    workerPendingActivityAdapter.notifyDataSetChanged();
+
+                }
+                else
+                {
+                    String s = response.errorBody().toString();
+                    Toast.makeText(WorkerActivity.this, s, Toast.LENGTH_LONG).show();
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<NewComplaint>> call, Throwable t) {
+
+            }
+        });
+
+
+//        WorkerPendingInfo workerPendingInfo = new WorkerPendingInfo("1234", "ELECTRICIAN", "1/4/2022", "5:10 PM", "5607", "IEC2020080", "9761319703");
+//        WorkerPendingInfo workerPendingInfo1 = new WorkerPendingInfo("1234", "ELECTRICIAN", "1/4/2022", "5:10 PM", "5607", "IEC2020080", "9761319703");
+//        workerPendingInfos.add(workerPendingInfo);
+//        workerPendingInfos.add(workerPendingInfo1);
     }
 }

@@ -36,6 +36,7 @@ public class ComplaintActivity extends AppCompatActivity implements AdapterView.
     String reqProff;
     NewComplaint comp;
     String token;
+    String phone;
 
 
     @Override
@@ -54,6 +55,8 @@ public class ComplaintActivity extends AppCompatActivity implements AdapterView.
         room = sharedPreferences.getString("currRoom","0000" );
         roll = sharedPreferences.getString("currRoll", "iec2020000");
         token = getIntent().getStringExtra("token");
+        phone = getIntent().getStringExtra("phone");
+
         rollNo.setText(roll);
         roomNo.setText(room);
 
@@ -92,7 +95,7 @@ public class ComplaintActivity extends AppCompatActivity implements AdapterView.
                     Call<NewComplaint> call = RetrofitClient
                             .getInstance()
                             .getApi()
-                            .newComp(token,prof,desc,roll,room);
+                            .newComp(token,prof,desc,roll,room,phone);
 
                     call.enqueue(new Callback<NewComplaint>() {
                         @Override

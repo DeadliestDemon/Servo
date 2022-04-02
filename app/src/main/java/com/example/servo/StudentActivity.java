@@ -42,6 +42,7 @@ public class StudentActivity extends AppCompatActivity{
     Button Pending;
     Button Completed;
     String Token;
+    String Phone;
 
     ArrayList<NewComplaint> newUser;
 
@@ -67,6 +68,7 @@ public class StudentActivity extends AppCompatActivity{
         completedActivityRecyclerView.setAdapter(completedActivityAdapter);
 
         Token = getIntent().getStringExtra("token");
+        Phone = getIntent().getStringExtra("phone");
 
         SharedPreferences sharedPreferences = this.getSharedPreferences("com.example.servo", Context.MODE_PRIVATE);
         completedActivityAdapter.notifyDataSetChanged();
@@ -104,6 +106,7 @@ public class StudentActivity extends AppCompatActivity{
 //                startActivity(new Intent(StudentActivity.this, ComplaintActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
                 Intent intent = new Intent(StudentActivity.this, ComplaintActivity.class);
                 intent.putExtra("token",Token);
+                intent.putExtra("phone", Phone);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 completedActivityAdapter.notifyDataSetChanged();

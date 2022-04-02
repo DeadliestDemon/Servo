@@ -9,9 +9,12 @@ public class NewComplaint {
     private String roll_number;
     private String room_number;
     private int student;
-    private int worker = 3;
 
-    public NewComplaint(int id, String type, String description, String date_lodged, Boolean mark_done, String roll_number, String room_number, int student, int worker) {
+
+
+    private String contact_number;
+
+    public NewComplaint(int id, String type, String description, String date_lodged, Boolean mark_done, String roll_number, String room_number, int student, String contact_number) {
         this.id = id;
         this.type = type;
         this.description = description;
@@ -20,7 +23,15 @@ public class NewComplaint {
         this.roll_number = roll_number;
         this.room_number = room_number;
         this.student = student;
-        this.worker = worker;
+        this.contact_number = contact_number;
+    }
+
+    public String getContact_number() {
+        return contact_number;
+    }
+
+    public void setContact_number(String contact_number) {
+        this.contact_number = contact_number;
     }
 
     public int getId() {
@@ -87,11 +98,4 @@ public class NewComplaint {
         this.student = student;
     }
 
-    public int getWorker() {
-        return worker;
-    }
-
-    public void setWorker(int worker) {
-        this.worker = worker;
-    }
 }
