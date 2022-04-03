@@ -338,7 +338,10 @@ public class StudentActivity extends AppCompatActivity implements StudentPending
                 if (response.code() == 200)
                 {
                     Toast.makeText(StudentActivity.this, "Complaint completed", Toast.LENGTH_SHORT).show();
-
+                    studentPendingInfos.clear();
+                    createStudentPendingListData();
+//        studentPendingActivityAdapter.notifyDataSetChanged();
+                    studentPendingActivityRecyclerView.setAdapter(studentPendingActivityAdapter);
                 }
                 else
                 {
@@ -354,7 +357,11 @@ public class StudentActivity extends AppCompatActivity implements StudentPending
         });
 
         //endchk
-        studentPendingActivityAdapter.notifyDataSetChanged();
+
+        studentPendingInfos.clear();
+        createStudentPendingListData();
+//        studentPendingActivityAdapter.notifyDataSetChanged();
+        studentPendingActivityRecyclerView.setAdapter(studentPendingActivityAdapter);
     }
 
     @Override
@@ -365,4 +372,12 @@ public class StudentActivity extends AppCompatActivity implements StudentPending
         startActivity(a);
     }
 
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//
+//                studentPendingActivityAdapter.notifyDataSetChanged();
+//
+//
+//    }
 }

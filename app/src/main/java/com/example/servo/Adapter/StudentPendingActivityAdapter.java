@@ -4,33 +4,21 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.servo.Api.NewComplaint;
-import com.example.servo.Api.RetrofitClient;
 import com.example.servo.R;
-import com.example.servo.StudentActivity;
 import com.example.servo.StudentPendingInfo;
 
 
 import java.util.ArrayList;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class StudentPendingActivityAdapter extends RecyclerView.Adapter<StudentPendingActivityAdapter.StudentPendingActivityHolder> {
 //    Adapter
@@ -154,7 +142,7 @@ public class StudentPendingActivityAdapter extends RecyclerView.Adapter<StudentP
         public void onPatchListener(Intent intent);
     }
 
-
+    
 
 
 
