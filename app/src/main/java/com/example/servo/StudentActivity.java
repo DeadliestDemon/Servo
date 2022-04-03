@@ -121,39 +121,66 @@ public class StudentActivity extends AppCompatActivity implements StudentPending
             @Override
             public void onClick(View view) {
 
-//                Log.e("chk","CHEK");
-                Call<Void> logoutCall = RetrofitClient
-                        .getInstance()
-                        .getApi().logOut(Token);
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(StudentActivity.this);
+                // Setting Alert Dialog Title
+                alertDialogBuilder.setTitle("Confirm..!!!");
+                // Icon Of Alert Dialog
+                alertDialogBuilder.setIcon(R.drawable.ic_deplete_complaint_alert);
+                // Setting Alert Dialog Message
+                alertDialogBuilder.setMessage("Are you sure that you want to logout?");
+                alertDialogBuilder.setCancelable(false);
 
-                logoutCall.enqueue(new Callback<Void>() {
+                alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+
                     @Override
-                    public void onResponse(Call<Void> call, Response<Void> response) {
-                        if (response.code() == 200)
-                        {
-//                            Toast.makeText(StudentActivity.this, "log outed", Toast.LENGTH_SHORT).show();
-                            Log.e("logout==========>", "success");
-                            startActivity(new Intent(StudentActivity.this, MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        //                Log.e("chk","CHEK");
+                        Call<Void> logoutCall = RetrofitClient
+                            .getInstance()
+                            .getApi().logOut(Token);
 
-                        }
-                        else {
-                            String s = response.errorBody().toString();
-                            Log.e("logout==========>", response.errorBody().toString());
+                        logoutCall.enqueue(new Callback<Void>() {
+                            @Override
+                            public void onResponse(Call<Void> call, Response<Void> response) {
+                                if (response.code() == 200) {
+//                            Toast.makeText(StudentActivity.this, "log outed", Toast.LENGTH_SHORT).show();
+                                    Log.e("logout==========>", "success");
+                                    startActivity(new Intent(StudentActivity.this, MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
+
+                                } else {
+                                    String s = response.errorBody().toString();
+                                    Log.e("logout==========>", response.errorBody().toString());
 
 //                            Toast.makeText(StudentActivity.this, s, Toast.LENGTH_SHORT).show();
 
-                        }
-                    }
+                                }
+                            }
 
-                    @Override
-                    public void onFailure(Call<Void> call, Throwable t) {
-                        Log.e("logout==========>", t.toString());
+                            @Override
+                            public void onFailure(Call<Void> call, Throwable t) {
+                                Log.e("logout==========>", t.toString());
 
 
+                            }
+                        });
+
+//                startActivity();
                     }
                 });
 
-//                startActivity();
+//                finish();}
+
+
+                alertDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+//                            Toast.makeText(.this,"You clicked over No",Toast.LENGTH_SHORT).show();
+//                        checkBox.setBackgroundResource(R.drawable.ic_baseline_radio_button_unchecked_24);
+
+                    }
+                });
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
             }
         });
 

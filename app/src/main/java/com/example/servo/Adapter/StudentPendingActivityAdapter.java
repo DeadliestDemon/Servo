@@ -88,11 +88,11 @@ public class StudentPendingActivityAdapter extends RecyclerView.Adapter<StudentP
 
                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
                     // Setting Alert Dialog Title
-                    alertDialogBuilder.setTitle("Confirm Exit..!!!");
+                    alertDialogBuilder.setTitle("Confirm..!!!");
                     // Icon Of Alert Dialog
                     alertDialogBuilder.setIcon(R.drawable.ic_deplete_complaint_alert);
                     // Setting Alert Dialog Message
-                    alertDialogBuilder.setMessage("Are you sure,You want to delete this complaint?");
+                    alertDialogBuilder.setMessage("Are you sure that you want to mark this complaint as done?");
                     alertDialogBuilder.setCancelable(false);
 
                     alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
