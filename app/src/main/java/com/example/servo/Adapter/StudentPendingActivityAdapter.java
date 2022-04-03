@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -94,6 +95,7 @@ public class StudentPendingActivityAdapter extends RecyclerView.Adapter<StudentP
             checkBox.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    checkBox.setBackgroundResource(R.drawable.ic_baseline_check_circle_outline_24);
                     int adapterPos = getAdapterPosition();
 
                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
@@ -126,7 +128,7 @@ public class StudentPendingActivityAdapter extends RecyclerView.Adapter<StudentP
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
 //                            Toast.makeText(.this,"You clicked over No",Toast.LENGTH_SHORT).show();
-
+                            checkBox.setBackgroundResource(R.drawable.ic_baseline_radio_button_unchecked_24);
 
                         }
                     });
