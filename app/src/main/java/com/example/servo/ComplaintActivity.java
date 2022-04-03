@@ -137,12 +137,6 @@ public class ComplaintActivity extends AppCompatActivity implements AdapterView.
                     {
                         Toast.makeText(ComplaintActivity.this, "Complaint Added Successfully", Toast.LENGTH_SHORT).show();
                     }
-
-                    StudentActivity.studentPendingInfos.clear();
-                    StudentActivity.createStudentPendingListData();
-//        studentPendingActivityAdapter.notifyDataSetChanged();
-                    studentPendingActivityRecyclerView.setAdapter(studentPendingActivityAdapter);
-
                     // register Complaint
                     finish();
                 }

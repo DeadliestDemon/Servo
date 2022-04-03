@@ -131,10 +131,10 @@ public class StudentPendingActivityAdapter extends RecyclerView.Adapter<StudentP
 
         @SuppressLint("SetTextI18n")
         void SetDetails(StudentPendingInfo studentPendingInfo) {
-            txtIdNo.setText("NO : " + studentPendingInfo.getIdNo());
-            txtType.setText("TYPE : " + studentPendingInfo.getType());
-            txtDate.setText("DATE : " + studentPendingInfo.getDate());
-            txtTime.setText("TIME : " + studentPendingInfo.getTime());
+            txtIdNo.setText("No : " + studentPendingInfo.getIdNo());
+            txtType.setText("Type : " + studentPendingInfo.getType());
+            txtDate.setText("Date : " + studentPendingInfo.getDate());
+            txtTime.setText("Time : " + studentPendingInfo.getTime());
         }
     }
 

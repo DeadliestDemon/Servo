@@ -59,12 +59,12 @@ public class CompletedActivityAdapter extends RecyclerView.Adapter<CompletedActi
 
         @SuppressLint("SetTextI18n")
         void SetDetails(CompletedActivityInfo completedActivityInfo) {
-            txtIdNo.setText("NO : " + completedActivityInfo.getIdNo());
-            txtType.setText("TYPE : " + completedActivityInfo.getType());
-            txtSDate.setText("DATE : " + completedActivityInfo.getsDate());
-            txtSTime.setText("TIME : " + completedActivityInfo.getsTime());
-            txtEDate.setText("DATE : " + completedActivityInfo.geteDate());
-            txtETime.setText("TIME : " + completedActivityInfo.geteTime());
+            txtIdNo.setText("No : " + completedActivityInfo.getIdNo());
+            txtType.setText("Type : " + completedActivityInfo.getType());
+            txtSDate.setText("Date : " + completedActivityInfo.getsDate());
+            txtSTime.setText("Time : " + completedActivityInfo.getsTime());
+            txtEDate.setText("Date : " + completedActivityInfo.geteDate());
+            txtETime.setText("Time : " + completedActivityInfo.geteTime());
         }
 
     }

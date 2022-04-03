@@ -19,6 +19,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:text="TextView"
+        android:fontFamily="@font/abhaya_libre"
         android:textColor="@color/colorPrimary"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -30,6 +31,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:text="TextView"
+        android:fontFamily="@font/abhaya_libre"
         android:textColor="@color/colorPrimary"
         app:layout_constraintStart_toEndOf="@+id/view2"
         app:layout_constraintTop_toTopOf="parent" />
@@ -41,6 +43,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="15dp"
         android:text="@string/complaintStart"
+        android:fontFamily="@font/abhaya_libre"
         android:textColor="@color/colorPrimary"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cswidNo" />
@@ -52,6 +55,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="5dp"
         android:text="TextView"
+        android:fontFamily="@font/abhaya_libre"
         android:textColor="@color/colorPrimary"
         app:layout_constraintStart_toEndOf="@+id/view2"
         app:layout_constraintTop_toBottomOf="@+id/textView11" />
@@ -63,6 +67,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="5dp"
         android:text="TextView"
+        android:fontFamily="@font/abhaya_libre"
         android:textColor="@color/colorPrimary"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
@@ -75,6 +80,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginBottom="10dp"
         android:text="TextView"
+        android:fontFamily="@font/abhaya_libre"
         android:textColor="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/view2"
@@ -98,6 +104,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginBottom="10dp"
         android:text="TextView"
+        android:fontFamily="@font/abhaya_libre"
         android:textColor="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -110,6 +117,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="15dp"
         android:text="@string/complaintEnd"
+        android:fontFamily="@font/abhaya_libre"
         android:textColor="@color/colorPrimary"
         app:layout_constraintStart_toEndOf="@+id/view2"
         app:layout_constraintTop_toBottomOf="@+id/cswType" />

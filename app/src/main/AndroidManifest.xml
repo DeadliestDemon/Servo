@@ -20,12 +20,6 @@
             android:name=".ComplaintDetails"
             android:exported="false" />
         <activity
-            android:name=".CompletedActivity"
-            android:exported="false" />
-        <activity
-            android:name=".StudentPendingActivity"
-            android:exported="false" />
-        <activity
             android:name=".ComplaintActivity"
             android:exported="false" />
 <!--        <activity-->

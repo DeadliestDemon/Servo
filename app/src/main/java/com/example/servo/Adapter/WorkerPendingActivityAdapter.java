@@ -11,8 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.servo.R;
-import com.example.servo.StudentPendingInfo;
-import com.example.servo.WorkerPendingActivity;
 import com.example.servo.WorkerPendingInfo;
 
 import java.util.ArrayList;
@@ -63,13 +61,13 @@ public class WorkerPendingActivityAdapter extends RecyclerView.Adapter<WorkerPen
 
         @SuppressLint("SetTextI18n")
         void SetDetails(WorkerPendingInfo workerPendingInfo) {
-            txtWIdNo.setText("NO : " + workerPendingInfo.getIdNo());
-            txtWType.setText("TYPE : " + workerPendingInfo.getType());
-            txtWRoom.setText("ROOM NO : " + workerPendingInfo.getRoomNO());
-            txtWRoll.setText("ROLL NO : " + workerPendingInfo.getRollNO());
-            txtWContact.setText("CONTACT NO : " + workerPendingInfo.getContactNo());
-            txtWDate.setText("DATE : " + workerPendingInfo.getDate());
-            txtWTime.setText("TIME : " + workerPendingInfo.getTime());
+            txtWIdNo.setText("No : " + workerPendingInfo.getIdNo());
+            txtWType.setText("Type : " + workerPendingInfo.getType());
+            txtWRoom.setText("Room no : " + workerPendingInfo.getRoomNO());
+            txtWRoll.setText("Roll no : " + workerPendingInfo.getRollNO());
+            txtWContact.setText("Contact no : " + workerPendingInfo.getContactNo());
+            txtWDate.setText("Date : " + workerPendingInfo.getDate());
+            txtWTime.setText("Time : " + workerPendingInfo.getTime());
         }
     }
 }

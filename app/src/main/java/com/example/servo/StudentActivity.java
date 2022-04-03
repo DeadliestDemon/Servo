@@ -70,7 +70,9 @@ public class StudentActivity extends AppCompatActivity implements StudentPending
         Pending = findViewById(R.id.pendingBtn);
         Completed = findViewById(R.id.completedBtn);
         studentPendingActivityRecyclerView = findViewById(R.id.studentPendingRecyclerView);
+        studentPendingActivityRecyclerView.setNestedScrollingEnabled(true);
         completedActivityRecyclerView = findViewById(R.id.completedRecyclerView);
+        completedActivityRecyclerView.setNestedScrollingEnabled(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         studentPendingActivityRecyclerView.setLayoutManager(linearLayoutManager);
         studentPendingInfos = new ArrayList<StudentPendingInfo>();
