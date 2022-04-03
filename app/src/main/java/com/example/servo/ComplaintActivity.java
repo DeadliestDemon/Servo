@@ -1,5 +1,8 @@
 package com.example.servo;
 
+import static com.example.servo.StudentActivity.studentPendingActivityAdapter;
+import static com.example.servo.StudentActivity.studentPendingActivityRecyclerView;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -105,7 +108,10 @@ public class ComplaintActivity extends AppCompatActivity implements AdapterView.
 
                                 comp = response.body();
 //                                Toast.makeText(ComplaintActivity.this, comp.getDescription(), Toast.LENGTH_SHORT).show();
-
+                                StudentActivity.studentPendingInfos.clear();
+                                StudentActivity.createStudentPendingListData();
+//        studentPendingActivityAdapter.notifyDataSetChanged();
+                                studentPendingActivityRecyclerView.setAdapter(studentPendingActivityAdapter);
 
 
 
@@ -131,6 +137,11 @@ public class ComplaintActivity extends AppCompatActivity implements AdapterView.
                     {
                         Toast.makeText(ComplaintActivity.this, "Complaint Added Successfully", Toast.LENGTH_SHORT).show();
                     }
+
+                    StudentActivity.studentPendingInfos.clear();
+                    StudentActivity.createStudentPendingListData();
+//        studentPendingActivityAdapter.notifyDataSetChanged();
+                    studentPendingActivityRecyclerView.setAdapter(studentPendingActivityAdapter);
 
                     // register Complaint
                     finish();

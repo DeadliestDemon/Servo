@@ -43,20 +43,20 @@ import retrofit2.Response;
 public class StudentActivity extends AppCompatActivity implements StudentPendingActivityAdapter.OnPatchListener {
 
     private BottomNavigationView bottomNavigationView;
-    RecyclerView studentPendingActivityRecyclerView;
+    static RecyclerView studentPendingActivityRecyclerView;
     RecyclerView completedActivityRecyclerView;
     private CompletedActivityAdapter completedActivityAdapter;
     private ArrayList<CompletedActivityInfo> completedActivityInfos;
-    private StudentPendingActivityAdapter studentPendingActivityAdapter;
-    private ArrayList<StudentPendingInfo> studentPendingInfos;
+    static StudentPendingActivityAdapter studentPendingActivityAdapter;
+    static ArrayList<StudentPendingInfo> studentPendingInfos;
     FloatingActionButton floatingActionButton;
     Button Pending;
     Button Completed;
     String Phone;
-    public String Token;
+    public static String Token;
     ImageView logout;
 
-    ArrayList<NewComplaint> newUser;
+    static ArrayList<NewComplaint> newUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -166,7 +166,11 @@ public class StudentActivity extends AppCompatActivity implements StudentPending
                 intent.putExtra("phone", Phone);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
-                completedActivityAdapter.notifyDataSetChanged();
+                studentPendingInfos.clear();
+                createStudentPendingListData();
+//        studentPendingActivityAdapter.notifyDataSetChanged();
+                studentPendingActivityRecyclerView.setAdapter(studentPendingActivityAdapter);
+
 
 
 
@@ -251,7 +255,7 @@ public class StudentActivity extends AppCompatActivity implements StudentPending
 //        completedActivityInfos.add(completedActivityInfo1);
     }
 
-    private void createStudentPendingListData() {
+    public static void createStudentPendingListData() {
 
         Call<ArrayList<NewComplaint>> callPending = RetrofitClient
                 .getInstance()
@@ -298,7 +302,7 @@ public class StudentActivity extends AppCompatActivity implements StudentPending
                 else
                 {
                     String s = response.errorBody().toString();
-                    Toast.makeText(StudentActivity.this, s, Toast.LENGTH_LONG).show();
+//                    Toast.makeText(StudentActivity.this, s, Toast.LENGTH_LONG).show();
 
                 }
             }
