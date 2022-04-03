@@ -55,20 +55,22 @@
         android:layout_height="146dp"
         android:layout_marginTop="8dp"
         android:contentDescription="@string/logo"
-        android:src="@drawable/app_title"
+        android:src="@drawable/servo_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="217dp"
-        android:layout_height="233dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/servo_logo"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.032"
-        tools:src="@tools:sample/avatars" />
+        app:layout_constraintVertical_bias="0.133" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

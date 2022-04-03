@@ -5,11 +5,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.servo.Adapter.CompletedActivityAdapter;
@@ -37,12 +40,14 @@ public class WorkerActivity extends AppCompatActivity {
     String Token;
     ArrayList<NewComplaint> newUser;
     SharedPreferences sharedPreferences;
+    ImageView logout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_worker);
 
+        logout = findViewById(R.id.menuButton);
         pendingWorker = findViewById(R.id.pendingBtnWorker);
         completedWorker = findViewById(R.id.completedBtnWorker);
         workerPendingActivityRecyclerView = findViewById(R.id.workerPendingRecyclerView);
@@ -65,6 +70,48 @@ public class WorkerActivity extends AppCompatActivity {
 
         createCompletedListData();
         createStudentPendingListData();
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+//                Log.e("chk","CHEK");
+                Call<Void> logoutCall = RetrofitClient
+                        .getInstance()
+                        .getApi().logOut(Token);
+
+                logoutCall.enqueue(new Callback<Void>() {
+                    @Override
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+                        if (response.code() == 200)
+                        {
+//                            Toast.makeText(StudentActivity.this, "log outed", Toast.LENGTH_SHORT).show();
+                            Log.e("logout==========>", "success");
+                            startActivity(new Intent(WorkerActivity.this, MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
+
+                        }
+                        else {
+                            String s = response.errorBody().toString();
+                            Log.e("logout==========>", response.errorBody().toString());
+
+//                            Toast.makeText(StudentActivity.this, s, Toast.LENGTH_SHORT).show();
+
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+                        Log.e("logout==========>", t.toString());
+
+
+                    }
+                });
+
+//                startActivity();
+            }
+        });
+
+
         pendingWorker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -92,6 +139,8 @@ public class WorkerActivity extends AppCompatActivity {
 
 
     }
+
+
 
     private void createCompletedListData() {
 

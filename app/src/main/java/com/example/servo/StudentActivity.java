@@ -166,10 +166,10 @@ public class StudentActivity extends AppCompatActivity implements StudentPending
                 intent.putExtra("phone", Phone);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
-                studentPendingInfos.clear();
-                createStudentPendingListData();
-//        studentPendingActivityAdapter.notifyDataSetChanged();
-                studentPendingActivityRecyclerView.setAdapter(studentPendingActivityAdapter);
+//                studentPendingInfos.clear();
+//                createStudentPendingListData();
+////        studentPendingActivityAdapter.notifyDataSetChanged();
+//                studentPendingActivityRecyclerView.setAdapter(studentPendingActivityAdapter);
 
 
 
@@ -362,10 +362,10 @@ public class StudentActivity extends AppCompatActivity implements StudentPending
 
         //endchk
 
-        studentPendingInfos.clear();
-        createStudentPendingListData();
-//        studentPendingActivityAdapter.notifyDataSetChanged();
-        studentPendingActivityRecyclerView.setAdapter(studentPendingActivityAdapter);
+//        studentPendingInfos.clear();
+//        createStudentPendingListData();
+////        studentPendingActivityAdapter.notifyDataSetChanged();
+//        studentPendingActivityRecyclerView.setAdapter(studentPendingActivityAdapter);
     }
 
     @Override
